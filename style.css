@@ -130,5 +130,15 @@ a:hover{
     border-radius: 0 .5em .5em 0;
 }
 
+.table-selector {
+    margin: auto;
+    margin-top: 5em;
+    padding: 10px;
+    border: 2px solid black;   
+        
+    width: 85%;
+    background-color: rgb(215, 208, 172);
+}
+
 
 
