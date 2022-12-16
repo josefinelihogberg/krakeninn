@@ -3,6 +3,12 @@ body,html{
     font-family: 'Pirata One', cursive;
     top: 0px !important;
 }
+*{
+    font-family: 'Pirata One', cursive;
+}
+body{
+    height: 100vh;
+}
 .google-translate-bar{
     position: absolute;
 
@@ -83,6 +89,18 @@ body,html{
     border: 2px ;
     z-index: -5;
 }
+.main-nav button{
+    background-color: transparent;
+    min-width: 3em;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: .3em;
+    font-size: 1.5em;
+    margin: .3em 0 .3em 0;
+    box-shadow: 0 0 5px black;
+    padding: .2em .2em .2em .2em;
+    color: rgb(121, 1, 1);
+}
 
 a:hover{
     color: azure;
@@ -128,6 +146,43 @@ a:hover{
     border: 1px solid grey;
     border-left: none;
     border-radius: 0 .5em .5em 0;
+}
+.menu-container{
+    height: 70%;
+    overflow: scroll;
+    margin-top: 1em;
+}
+
+.card{
+    margin: 2em auto 2em auto;
+    display: block;
+    width: 50%;
+}
+.card h2{
+    font-size: 2.5em;
+    margin: 0 0 .2em 0;
+}
+.card p{
+    font-size: 1.3em;
+}
+.card p, .card button{
+    margin: .5em;
+}
+.card img{
+    width: 100%;
+    border-radius: 1em;
+}
+.card button{
+    background-color: transparent;
+    min-width: 3em;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: .3em;
+    font-size: 1.5em;
+    margin: .3em 0 .3em 0;
+    box-shadow: 0 0 5px black;
+    padding: .2em .2em .2em .2em;
+    color: rgb(121, 1, 1);
 }
 
 
