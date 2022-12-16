@@ -1,57 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
-      integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap"
-      rel="stylesheet" />
-    <!--  icon  -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <script src="db.js"></script>
-    <script src="index.js" defer></script>
-    <link rel="stylesheet" href="style.css" />
-    <title>Kraken inn, the greatest resturant</title>
-  </head>
-  <body>
-    <img class="main-background" src="assets/background.jpg" alt="background" />
-    <div class="google-translate-bar" id="google_translate_element"></div>
-    <header class="header-container">
-      <img
-        class="header-pic"
-        src="assets/headerpicture (2).png"
-        alt="Goldcoin" />
-      <div class="header-container">
-        <h1 class="main-header-text main-header-left">Kraken</h1>
-        <h1 class="main-header-text main-header-right">Inn</h1>
-      </div>
-    </header>
-    <nav class="main-nav">
-      <img src="assets/navbackground-taller.png" alt="" />
-      <a href="">Home</a>
-      <a href="">Food</a>
-      <a href="">Drinks</a>
-    </nav>
-    <form class="search-container">
-      <input class="search-item" type="text" placeholder="search for food..." />
-      <button type="submit"><i class="fa fa-search"></i></button>
-    </form>
-    <main></main>
 
-    <script
-      type="text/javascript"
-      src="https://translate.google.com/translate_a/element.js?
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+    integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap" rel="stylesheet" />
+  <!--  icon  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <script src="db.js"></script>
+  <script src="index.js" defer></script>
+  <link rel="stylesheet" href="style.css" />
+  <title>Kraken inn, the greatest resturant</title>
+</head>
+
+<body>
+  <img class="main-background" src="assets/background.jpg" alt="background" />
+  <div class="google-translate-bar" id="google_translate_element"></div>
+  <header class="header-container">
+    <img class="header-pic" src="assets/headerpicture (2).png" alt="Goldcoin" />
+    <div class="header-container">
+      <h1 class="main-header-text main-header-left">Kraken</h1>
+      <h1 class="main-header-text main-header-right">Inn</h1>
+    </div>
+  </header>
+  <nav class="main-nav">
+    <img src="assets/navbackground-taller.png" alt="" />
+    <a href="">Home</a>
+    <a href="">Food</a>
+    <a href="">Drinks</a>
+    <label for="cart" class="label-cart">
+      <span class="fa fa-shopping-cart"></span>
+    </label>
+
+
+  </nav>
+  <form class="search-container">
+    <input class="search-item" type="text" placeholder="search for food..." />
+    <button type="submit"><i class="fa fa-search"></i></button>
+  </form>
+  <main>
+
+
+  </main>
+
+  <!--  cart  -->
+
+  <aside class="order-in-cart">
+    <div class="order-card">
+      <img class="order-image"
+        src="https://goldbelly.imgix.net/uploads/showcase_media_asset/image/79619/joes-kc-ribs-brisket-and-burnt-ends.6710e994980e485e6441b794717ad6fb.jpg?ixlib=react-9.0.2&auto=format&ar=1%3A1">
+      <div class="order-detail">
+        <p>Joe's KC BBQ</p>
+        <i class="fa fa-times"></i>
+
+        <input type="text" value="1">
+      </div>
+      <h3 class="order-price"><span>110.99</span>SEK</h3>
+    </div>
+    <hr>
+    <!-- show the total of order and payment method -->
+    <div class="order-total">
+
+      <p>Subtotal: <span>110.99</span> SEK</p>
+      <p>Moms (25%): <span>28</span> SEK</p>
+      <p>Total: <span>138.99</span> SEK</p>
+    </div>
+
+    <div class="order-payment">
+      <p>How would you like to pay? Please choose one below:</p>
+      <button>Pay now</button>
+      <button>Pay later</button>
+      <button>Cash in</button>
+    </div>
+  </aside>
+
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?
 cb=googleTranslateElementInit"></script>
-  </body>
+</body>
+
 </html>
