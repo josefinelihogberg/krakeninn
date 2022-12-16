@@ -16,7 +16,7 @@ const tableSelector = document.querySelector(".table-selector");
 function createTableSelector() {
   tableSelector.innerHTML = `
     <div class="options-container">
-    <h2 class="options-container-text">Which table are you sitting at?</h2>
+    <h2 class="options-container-text">What table are you sitting at?</h2>
     <form action="#">
       <select name="tables" id="table">
         <option value="1">Table 1</option>
