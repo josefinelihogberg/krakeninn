@@ -3,22 +3,6 @@ body,html{
     font-family: 'Pirata One', cursive;
     top: 0px !important;
 }
-.google-translate-bar{
-    position: absolute;
-
-}
-
-.goog-te-gadget-simple {
-    background-color: rgb(175, 149, 0) !important;
-    border: none !important;
-    font-size: 4rem;
-    padding: 0.5em 0.5em !important;
-    margin-left: auto;
-    border-radius: 0.5em;
-    cursor: pointer;
-    display: inline-block;
-    zoom: 1;
-}
 .goog-te-banner-frame{
     display:none !important;
 }
@@ -30,9 +14,22 @@ body,html{
 #google_translate_element {
     text-align: right;
 }
-.header-container{
-    
+
+.lang-btn{
+    position: absolute;
+    margin-top: 0.4em;
 }
+
+.lang{
+    background: transparent;
+    border: none;
+}
+
+.flag{
+    width: 30px;
+    height: 20px;
+}
+
 .main-background{
     position: absolute;
     z-index: -10;
@@ -48,9 +45,6 @@ body,html{
     width: 100%;
     justify-content: space-between;
     height: 10em;
-}
-.header-container h1{
-    
 }
 .main-header-left{
     margin: auto 0 .5em .2em;
