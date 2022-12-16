@@ -10,15 +10,48 @@
       integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap"
+      rel="stylesheet" />
+    <!--  icon  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script src="db.js"></script>
     <script src="index.js" defer></script>
     <link rel="stylesheet" href="style.css" />
     <title>Kraken inn, the greatest resturant</title>
   </head>
   <body>
-    <header>
-      <h1 class="main-header">The Kraken Inn</h1>
+    <img class="main-background" src="assets/background.jpg" alt="background" />
+    <div class="google-translate-bar" id="google_translate_element"></div>
+    <header class="header-container">
+      <img
+        class="header-pic"
+        src="assets/headerpicture (2).png"
+        alt="Goldcoin" />
+      <div class="header-container">
+        <h1 class="main-header-text main-header-left">Kraken</h1>
+        <h1 class="main-header-text main-header-right">Inn</h1>
+      </div>
     </header>
-    <nav></nav>
+    <nav class="main-nav">
+      <img src="assets/navbackground-taller.png" alt="" />
+      <a href="">Home</a>
+      <a href="">Food</a>
+      <a href="">Drinks</a>
+    </nav>
+    <form class="search-container">
+      <input class="search-item" type="text" placeholder="search for food..." />
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
     <main></main>
+
+    <script
+      type="text/javascript"
+      src="https://translate.google.com/translate_a/element.js?
+cb=googleTranslateElementInit"></script>
   </body>
 </html>
