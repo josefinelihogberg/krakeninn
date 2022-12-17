@@ -2,6 +2,7 @@
 body,html{
     font-family: 'Pirata One', cursive;
     top: 0px !important;
+    overflow: hidden;
 }
 *{
     font-family: 'Pirata One', cursive;
@@ -36,9 +37,7 @@ body{
 #google_translate_element {
     text-align: right;
 }
-.header-container{
-    
-}
+
 .main-background{
     position: absolute;
     z-index: -10;
@@ -54,9 +53,6 @@ body{
     width: 100%;
     justify-content: space-between;
     height: 10em;
-}
-.header-container h1{
-    
 }
 .main-header-left{
     margin: auto 0 .5em .2em;
@@ -105,18 +101,7 @@ body{
 a:hover{
     color: azure;
 }
-.main-nav a{
-    text-decoration: none;
-    min-width: 3em;
-    text-align: center;
-    border: 2px solid black;
-    border-radius: .3em;
-    font-size: 1.5em;
-    margin: .3em 0 .3em 0;
-    box-shadow: 0 0 5px black;
-    padding: .2em .2em .2em .2em;
-    color: rgb(121, 1, 1);
-}
+
 .search-item{
     padding: .5em;
     width: 15em;
@@ -152,11 +137,30 @@ a:hover{
     overflow: scroll;
     margin-top: 1em;
 }
+.foodCategories, .sweetsCategories{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 50%;
+    height: 50vh;
+}
+main{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items:center;
+}
 
 .card{
+    display: flex;
     margin: 2em auto 2em auto;
     display: block;
-    width: 50%;
+    padding: .5em;
+    width: 44%;
+    min-height: 30em;
+    word-wrap:normal;
+    border: 3px solid black;
+    border-radius: 1em;
 }
 .card h2{
     font-size: 2.5em;
@@ -172,18 +176,28 @@ a:hover{
     width: 100%;
     border-radius: 1em;
 }
-.card button{
+.buttonStyle{
     background-color: transparent;
-    min-width: 3em;
-    text-align: center;
     border: 2px solid black;
     border-radius: .3em;
-    font-size: 1.5em;
-    margin: .3em 0 .3em 0;
+    font-size: 1.8em;
     box-shadow: 0 0 5px black;
-    padding: .2em .2em .2em .2em;
     color: rgb(121, 1, 1);
 }
+.card button{
+    min-width: 3em;
+    margin: .3em 0 .3em 0;
+}
+.foodCategories button, .sweetsCategories button{
+    height: 10%;
+}
+.categoryBtn{
+    min-width: 3em;
+    font-size: 1.8em;
+    margin: .3em 0 .3em 0;
+}
+
+
 
 
 
