@@ -43,8 +43,6 @@ body{
     z-index: -10;
 }
 .main-header-text{
-    
-    height: 20%;
     font-size:2.1em;
     color: rgb(175, 149, 0);
 }
@@ -97,9 +95,8 @@ body{
     padding: .2em .2em .2em .2em;
     color: rgb(121, 1, 1);
 }
-
-a:hover{
-    color: azure;
+.main-nav button:active{
+    box-shadow: 0 0 6px rgb(121, 1, 1);
 }
 
 .search-item{
