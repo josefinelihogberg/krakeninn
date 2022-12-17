@@ -31,14 +31,10 @@
   </header>
   <nav class="main-nav">
     <img src="assets/navbackground-taller.png" alt="" />
-    <a href="">Home</a>
-    <a href="">Food</a>
-    <a href="">Drinks</a>
-    <a href="#order">Order <span class="fa fa-shopping-cart"></span></a>
-
-    <!-- <label for="cart" class="label-cart"><span class="fa fa-shopping-cart"></span></label>-->
-
-
+    <button class="home">Home</button>
+    <button class="food-category">food</button>
+    <button class="drinks-category">Drinks</button>
+    <i class="fa fa-shopping-cart" id="cart-icon"></i>
   </nav>
   <form class="search-container">
     <input class="search-item" type="text" placeholder="search for food..." />
@@ -46,39 +42,30 @@
   </form>
   <main>
 
+    <button class="add-to-cart-btn">Add to cart</button>
 
   </main>
 
-  <!--  cart  -->
+  <!-- Cart -->
+  <div class="cart">
+    <h2 class="cart-title">Your Cart</h2>
+    <!-- Content -->
+    <div class="cart-content">
 
-  <aside class="order-in-cart" id="order">
-    <div class="order-card">
-      <img class="order-image"
-        src="https://goldbelly.imgix.net/uploads/showcase_media_asset/image/79619/joes-kc-ribs-brisket-and-burnt-ends.6710e994980e485e6441b794717ad6fb.jpg?ixlib=react-9.0.2&auto=format&ar=1%3A1">
-      <div class="order-detail">
-        <p>Joe's KC BBQ</p>
-        <i class="fa fa-times"></i>
-
-        <input type="text" value="1">
-      </div>
-      <h3 class="order-price"><span>110.99</span>SEK</h3>
     </div>
-    <hr>
-    <!-- show the total of order and payment method -->
-    <div class="order-total">
-
-      <p>Subtotal: <span>110.99</span> SEK</p>
-      <p>Moms (25%): <span>28</span> SEK</p>
-      <p>Total: <span>138.99</span> SEK</p>
+    <!-- Total -->
+    <div class="total">
+      <div class="total-title">Total</div>
+      <div class="total-price">0 SEK</div>
     </div>
+    <!-- Buy Button -->
+    <button class="pay-btn">Pay Now</button>
+    <button class="pay-btn">Pay Later</button>
+    <button class="pay-btn">Prepaid</button>
+    <!-- Cart Close -->
+    <i class='fa fa-remove' id="close-cart"></i>
+  </div>
 
-    <div class="order-payment">
-      <p>How would you like to pay? Please choose one below:</p>
-      <button>Pay now</button>
-      <button>Pay later</button>
-      <button>Cash in</button>
-    </div>
-  </aside>
 
   <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?
 cb=googleTranslateElementInit"></script>

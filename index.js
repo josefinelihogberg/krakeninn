@@ -6,6 +6,20 @@ foodCategory.addEventListener('click', openFoodMenu);
 drinksCategory.addEventListener('click', openDrinksMenu);
 bestFoodCategory.addEventListener('click', openHighlightsMenu);
 
+//  Cart
+let cartIcon = document.querySelector("#cart-icon");
+let cart = document.querySelector(".cart");
+let closeCart = document.querySelector("#close-cart");
+// Open Cart
+cartIcon.onclick = function() {
+  cart.classList.add("active");
+};
+
+// Close Cart
+closeCart.onclick = function() {
+  cart.classList.remove("active");
+};
+
 function generateFoodList(category){
   console.log(category);
   for (let i = 0; i < db[category].length; i++) {
@@ -17,7 +31,7 @@ function generateFoodList(category){
     </figure>
     <p>${db[category][i].dsc}</p>
     <p>${db[category][i].price} sek</p>
-    <button>Add to cart</button>`;
+    <button class="add-to-cart-btn">Add to cart</button>`;
     newArticle.className = "card";
     newArticle.innerHTML = foodContent;
     main.append(newArticle);
