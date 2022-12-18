@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap" rel="stylesheet" />
-  <!--  icon  -->
+  <!-- icon -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <script src="db.js"></script>
   <script src="index.js" defer></script>
@@ -54,12 +54,23 @@
     <h2 class="cart-title">Your Cart</h2>
     <!-- Content -->
     <div class="cart-content">
-
+      <div class="cart-box">
+        <img class="cart-img"
+          src="https://goldbelly.imgix.net/uploads/showcase_media_asset/image/110906/bo-ssam-dinner-for-4.c4a32e8801e2f0283e0565bbe8493149.jpg?ixlib=react-9.0.2&auto=format&ar=1%3A1"
+          alt="">
+        <div class="detail-box">
+          <p class="title">Momofuku</p>
+          <p>169 SEK</p>
+          <i class="fa fa-remove"></i>
+          <input class="cart-quantity" type="number" value="1">
+        </div>
+        <button class="cart-remove">remove</button>
+      </div>
     </div>
     <!-- Total -->
     <div class="total">
       <div class="total-title">Total</div>
-      <div class="total-price">0 SEK</div>
+      <div class="total-price"><span class="total-number">169</span> SEK</div>
     </div>
     <!-- Buy Button -->
     <button class="pay-btn">Pay Now</button>

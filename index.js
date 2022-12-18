@@ -6,7 +6,7 @@ foodCategory.addEventListener('click', openFoodMenu);
 drinksCategory.addEventListener('click', openDrinksMenu);
 bestFoodCategory.addEventListener('click', openHighlightsMenu);
 
-//  Cart
+// Cart
 let cartIcon = document.querySelector(".cart-icon");
 let cart = document.querySelector(".cart");
 let closeCart = document.querySelector(".close-cart");

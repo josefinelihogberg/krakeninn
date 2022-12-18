@@ -3,6 +3,7 @@ body,
 html {
   font-family: "Pirata One", cursive;
   top: 0px !important;
+  height: 100vh;
 }
 .google-translate-bar {
   position: absolute;
@@ -218,10 +219,9 @@ a:hover {
   position: fixed;
   display: none;
   width: 300px;
-  min-height: 100vh;
   padding: 20px;
   box-shadow: 1px 1px 3px rgb(175, 149, 0);
-  margin-top: -3.5em;
+  margin-top: -5em;
 }
 .cart.active {
   display: block;
@@ -271,26 +271,31 @@ a:hover {
   border-radius: 5px;
 }
 
-.total {
+.cart-box {
+  margin-top: 1em;
   display: flex;
-  justify-content: flex-end;
-  margin-bottom: 2em;
-  margin-top: 1.5rem;
-  border-top: 1px solid grey;
-  padding: 1em;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.8em;
+  align-items: center;
 }
 
-.total-title {
-  font-size: 1rem;
-  font-weight: 600;
+.detail-box {
+  display: flex;
+  gap: 1em;
+  align-items: center;
 }
-.total-price {
-  margin-left: 0.5rem;
+.cart-quantity {
+  width: 2.5em;
+  height: 2.5em;
+  font: 2.5em;
+  background-color: #f3f3f3;
+  opacity: 0.8;
+  border-radius: 3px;
+  border: none;
 }
 
-.pay-btn {
-  display: flex;
-  margin: 1.5rem auto 0 auto;
+.cart-remove {
   padding: 12px 20px;
   border: none;
   border-radius: 2px;
@@ -301,6 +306,39 @@ a:hover {
   border-radius: 0.5em;
   cursor: pointer;
 }
-.pay-btn:hover {
+.total {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1em;
+  border-top: 1px solid grey;
+  padding: 0.8em;
+}
+
+.total-title {
+  font-weight: 600;
+}
+.total-price {
+  margin-left: 0.5em;
+}
+
+.total-number {
+  color: rgb(121, 1, 1);
+}
+
+.pay-btn,
+.cart-remove {
+  display: flex;
+  margin: 0.8em auto;
+  padding: 0.8em;
+  border: none;
+  border-radius: 2px;
+  background: rgb(175, 149, 0);
+  color: white;
+  font-size: 0.8em;
+  border-radius: 0.5em;
+  cursor: pointer;
+}
+.pay-btn:hover,
+.cart-remove:hover {
   background: rgb(121, 1, 1);
 }
