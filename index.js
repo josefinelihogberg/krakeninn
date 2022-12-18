@@ -7,9 +7,12 @@ drinksCategory.addEventListener('click', openDrinksMenu);
 bestFoodCategory.addEventListener('click', openHighlightsMenu);
 
 //  Cart
-let cartIcon = document.querySelector("#cart-icon");
+let cartIcon = document.querySelector(".cart-icon");
 let cart = document.querySelector(".cart");
-let closeCart = document.querySelector("#close-cart");
+let closeCart = document.querySelector(".close-cart");
+let products = document.querySelectorAll(".add-cart");
+let shoppingCart = [];
+
 // Open Cart
 cartIcon.onclick = function() {
   cart.classList.add("active");
@@ -20,18 +23,32 @@ closeCart.onclick = function() {
   cart.classList.remove("active");
 };
 
+// Update the number of items in the cart
+function updateCart() {
+  for(let i = 0; i < products.length; i++) {
+      products[i].addEventListener('click', function(event) {
+          let product = event.target;
+          let cartTotal = document.querySelector('.cart-total');
+          shoppingCart.push(product);
+          cartTotal.textContent = shoppingCart.length; 
+      });
+  }
+}
+updateCart();
+
+
 function generateFoodList(category){
   console.log(category);
   for (let i = 0; i < db[category].length; i++) {
     let newArticle = document.createElement("article");
     let foodContent = 
-    `<h2>${db[category][i].name}</h2>
+    `<h2 class="product-title">${db[category][i].name}</h2>
     <figure>
-    <img src="${db[category][i].img}"/>
+    <img class="product-img" src="${db[category][i].img}"/>
     </figure>
     <p>${db[category][i].dsc}</p>
-    <p>${db[category][i].price} sek</p>
-    <button class="add-to-cart-btn">Add to cart</button>`;
+    <p class="price">${db[category][i].price} sek</p>
+    <button class="add-cart">Add to cart</button>`;
     newArticle.className = "card";
     newArticle.innerHTML = foodContent;
     main.append(newArticle);
