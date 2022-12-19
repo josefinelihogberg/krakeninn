@@ -9,10 +9,10 @@ bestFoodCategory.addEventListener('click', openHighlightsMenu);
 sweetsCategory.addEventListener('click', openSweetsMenu)
 
 // Cart
+let addToCartBtnArray = document.querySelectorAll(".add-cart");
 let cartIcon = document.querySelector(".cart-icon");
 let cart = document.querySelector(".cart");
 let closeCart = document.querySelector(".close-cart");
-let products = document.querySelectorAll(".add-cart");
 let cartRemove = document.querySelector(".cart-remove");
 let productPrice = document.querySelector(".product-price").textContent;
 console.log(productPrice);
@@ -30,19 +30,14 @@ cartIcon.addEventListener('click', function() {
   main.style.transition = "800ms";
 });
 
-// Close Cart
-closeCart.addEventListener('click', function() {
-  cart.classList.remove("active");
-});
-
-// Update the number of items in the cart
 function updateCart() {
-  for(let i = 0; i < products.length; i++) {
-      products[i].addEventListener('click', function(event) {
+  for(let i = 0; i < addToCartBtnArray.length; i++) {
+      addToCartBtnArray[i].addEventListener('click', function(event) {
           let product = event.target;
           let cartTotal = document.querySelector('.cart-total');
           shoppingCart.push(product);
-          cartTotal.textContent = shoppingCart.length; 
+          cartTotal.textContent = shoppingCart.length;
+          console.log(event.target);
       });
   }
 }
@@ -79,7 +74,9 @@ function generateFoodList(category){
     newArticle.innerHTML = foodContent;
     main.append(newArticle);
   }
+  addToCartListener();
 }
+
 function foodCategories(){
   let newDiv = document.createElement('div');
   let categories = `
