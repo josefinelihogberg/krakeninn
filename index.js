@@ -12,12 +12,12 @@ function generateFoodList(category){
   for (let i = 0; i < db[category].length; i++) {
     let newArticle = document.createElement("article");
     let foodContent = 
-    `<h2>${db[category][i].name}</h2>
+    `<h2 translate="no">${db[category][i].name}</h2>
     <figure>
     <img src="${db[category][i].img}"/>
     </figure>
-    <p>${db[category][i].dsc}</p>
-    <p>${db[category][i].price} sek</p>
+    <p translate="no">${db[category][i].dsc}</p>
+    <p translate="no">${db[category][i].price} sek</p>
     <button class = "buttonStyle">Add to cart</button>`;
     newArticle.className = "card";
     newArticle.innerHTML = foodContent;
@@ -180,10 +180,6 @@ function changeEng(e) {
   }
 }
 
-
-
-//starting functions
-openHighlightsMenu();
 
 //starting functions
 openHighlightsMenu();
