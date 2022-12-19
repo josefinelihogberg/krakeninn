@@ -10,32 +10,9 @@ body,html{
 body{
     height: 100vh;
 }
-.google-translate-bar {
-  position: absolute;
-}
 
-.goog-te-gadget-simple {
-  background-color: rgb(175, 149, 0) !important;
-  border: none !important;
-  font-size: 4rem;
-  padding: 0.5em 0.5em !important;
-  margin-left: auto;
-  border-radius: 0.5em;
-  cursor: pointer;
-  display: inline-block;
-  zoom: 1;
-}
-.goog-te-banner-frame {
-  display: none !important;
-}
 
-.goog-te-gadget-icon {
-  display: none;
-}
 
-#google_translate_element {
-  text-align: right;
-}
 
 .main-background{
     position: absolute;
@@ -307,6 +284,9 @@ main{
   gap: 0.8em;
   align-items: center;
 }
+.goog-te-banner-frame{
+    display:none !important;
+}
 
 .detail-box {
   display: flex;
@@ -322,6 +302,10 @@ main{
   border-radius: 3px;
   border: none;
 }
+/* translate style */
+.goog-te-gadget-icon {
+    display:none;
+  }
 
 .cart-remove {
   padding: 12px 20px;
@@ -341,6 +325,9 @@ main{
   border-top: 1px solid grey;
   padding: 0.8em;
 }
+#google_translate_element {
+    text-align: right;
+}
 
 .total-title {
   font-weight: 600;
@@ -348,6 +335,10 @@ main{
 .total-price {
   margin-left: 0.5em;
   color: rgb(121, 1, 1);
+}
+.lang-btn{
+    position: absolute;
+    margin-top: 0.4em;
 }
 
 .pay-btn,
@@ -366,4 +357,13 @@ main{
 .pay-btn:hover,
 .cart-remove:hover {
   background: rgb(121, 1, 1);
+}
+.lang{
+    background: transparent;
+    border: none;
+}
+
+.flag{
+    width: 25px;
+    height: 15px;
 }

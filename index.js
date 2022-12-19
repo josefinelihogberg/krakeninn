@@ -68,12 +68,12 @@ function generateFoodList(category){
   for (let i = 0; i < db[category].length; i++) {
     let newArticle = document.createElement("article");
     let foodContent = 
-    `<h2 class="product-title">${db[category][i].name}</h2>
+    `<h2 class="product-title" translate="no">${db[category][i].name}</h2>
     <figure>
     <img class="product-img" src="${db[category][i].img}"/>
     </figure>
-    <p>${db[category][i].dsc}</p>
-    <p class="price">${db[category][i].price} sek</p>
+    <p translate="no">${db[category][i].dsc}</p>
+    <p class="price" translate="no">${db[category][i].price} sek</p>
     <button class="add-cart buttonStyle">Add to cart</button>`;
     newArticle.className = "card";
     newArticle.innerHTML = foodContent;
@@ -199,17 +199,42 @@ function openFoodMenu() {
  }
 
 
+// translate
 
- // function that change the lang from swe to eng and the other way
 function googleTranslateElementInit() {
-  new google.translate.TranslateElement(
-      { pageLanguage: 'en',
-        includedLanguages: 'sv,en',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-      },
-      'google_translate_element'
-  );
+  new google.translate.TranslateElement({pageLanguage: "en"}, 'google_translate_element');
 }
+
+function ChangeSwe(e) {
+  var lang = document.getElementById("lang-sv").value;
+  var selectField = document.querySelector("#google_translate_element select");
+  for(var i=0; i < selectField.children.length; i++){
+    var option = selectField.children[i];
+    // find desired langauge and change the former language of the hidden selection-field 
+    if(option.value==lang){
+       selectField.selectedIndex = i;
+       // trigger change event afterwards to make google-lib translate this side
+       selectField.dispatchEvent(new Event('change'));
+       break;
+    }
+  }
+}
+
+function changeEng(e) {
+  var lang = document.getElementById("lang-en").value;
+  var selectField = document.querySelector("#google_translate_element select");
+  for(var i=0; i < selectField.children.length; i++){
+    var option = selectField.children[i];
+    // find desired langauge and change the former language of the hidden selection-field 
+    if(option.value==lang){
+       selectField.selectedIndex = i;
+       // trigger change event afterwards to make google-lib translate this side
+       selectField.dispatchEvent(new Event('change'));
+       break;
+    }
+  }
+}
+
 
 //starts when opening site
 openHighlightsMenu();
