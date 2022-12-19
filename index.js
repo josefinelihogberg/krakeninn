@@ -108,7 +108,6 @@ function openFoodMenu() {
  function openBbqs(){
   clearMenu();
   generateFoodList("bbqs");
-  console.log("here")
  }
  function opensteaks (){
   clearMenu();
