@@ -30,18 +30,30 @@ cartIcon.addEventListener('click', function() {
   main.style.transition = "800ms";
 });
 
-function updateCart() {
-  for(let i = 0; i < addToCartBtnArray.length; i++) {
-      addToCartBtnArray[i].addEventListener('click', function(event) {
-          let product = event.target;
-          let cartTotal = document.querySelector('.cart-total');
-          shoppingCart.push(product);
-          cartTotal.textContent = shoppingCart.length;
-          console.log(event.target);
-      });
-  }
+// Close Cart
+closeCart.addEventListener('click', function() {
+  cart.classList.remove("active");
+  main.style.opacity = "1";
+});
+
+// Update the number of items in the cart
+function addToCartListener(){
+  let addToCartBtnArray = document.querySelectorAll(".add-cart");
+  for (let i = 0; i < addToCartBtnArray.length; i++) {
+    addToCartBtnArray[i].addEventListener('click',addToCart);
+    
+  };
+  console.log("222");
+ 
+};
+
+function addToCart(){
+  let cartTotal = document.querySelector('.cart-total');
+  let product = event.target;
+  shoppingCart.push(product);
+  cartTotal.textContent = shoppingCart.length; 
 }
-updateCart();
+
 
 // Add event listener to the remove button in the cart
 function handelCartRemove () {
