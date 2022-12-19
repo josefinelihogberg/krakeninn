@@ -236,5 +236,83 @@ function changeEng(e) {
 }
 
 
+//this function creates an input where the costumer can put in an amount
+//of money that he/she wants to spend during the night. This amount will
+//be appended to a p tag somewhere on the page.
+function createFormMoneyInput(){
+  let moneyForm = document.createElement('form');
+  let moneyAmountInput = document.createElement('input');
+  let moneyAmountSubmitBtn = document.createElement('button');
+  moneyAmountSubmitBtn.innerText = 'add my money';
+ moneyAmountInput.setAttribute('type', 'text')
+  cart.append(moneyForm);
+  moneyForm.append(moneyAmountInput);
+  moneyForm.append(moneyAmountSubmitBtn);
+  moneyForm.addEventListener('submit', function(event){
+    event.preventDefault();
+    let amountH2 = document.querySelector('h2');
+    amountH2.innerText = 'you have this much left to spend:'
+    
+    let moneyAmountP = document.createElement('p');
+    moneyAmountP.classList.add("moneyP");
+    let cartBox = document.querySelector(".cart-box");
+   cartBox.append(moneyAmountP);
+   //p2.innerText = moneyAmountP;
+   moneyAmountP.innerText = `${moneyAmountInput.value}`;
+   //counter = moneyAmountInput.value;
+    //moneyAmountP.innerText = `Ditt saldo är: ${counter} kr`;
+  moneyAmountInput = "";
+  })
+}
+createFormMoneyInput();
+const testList = 
+   [
+    {
+      "id": "ribs-brisket-and-burnt-ends",
+      "img": "https://goldbelly.imgix.net/uploads/showcase_media_asset/image/79619/joes-kc-ribs-brisket-and-burnt-ends.6710e994980e485e6441b794717ad6fb.jpg?ixlib=react-9.0.2&auto=format&ar=1%3A1",
+      "name": "Joe's KC BBQ",
+      "dsc": "Joe's KC Ribs, Brisket & Burnt Ends",
+      "price": 110.99,
+      "rate": 4,
+      "country": "Kansas City, KS"
+    },
+    {
+      "id": "005-kings-carolina-oink-sampler",
+      "img": "https://goldbelly.imgix.net/uploads/showcase_media_asset/image/66752/carolina-bbq-oink-sampler.1340b5a10cedc238cb2280306dd1d5a5.jpg?ixlib=react-9.0.2&auto=format&ar=1%3A1",
+      "name": "Kings BBQ",
+      "dsc": "Carolina BBQ Oink Sampler",
+      "price": 89,
+      "rate": 4,
+      "country": "Kinston, NC"
+    }]
+//this function takes the text of p2 , it accepts an array, an array of the fooods and drinkt that
+//the costumer orders. The function add the prices togehter and then substract it 
+//from the amount of the p2 tag and gives it the new value.
+function updateSpendMoneyDisplay(arr) {
+  moneyP = document.querySelector('.moneyP')
+  let counter = moneyP.innerText;
+  console.log(parseInt(counter))
+ 
+ 
+  console.log(counter)
+  let newCounterArr = arr.map(function(element){
+    return element.price;
+    
+  })
+  console.log(newCounterArr);
+  //return newCounterArr;
+  let sum = 0;
+  for (let item of newCounterArr){
+  sum += item;
+}
+console.log(sum);
+moneyP.innerText = (parseInt(counter)) - sum;
+ return (parseInt(counter)) - sum;
+}
+
+
+
 //starts when opening site
 openHighlightsMenu();
+
+updateSpendMoneyDisplay()
