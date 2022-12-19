@@ -9,19 +9,19 @@ bestFoodCategory.addEventListener('click', openHighlightsMenu);
 sweetsCategory.addEventListener('click', openSweetsMenu)
 
 // Cart
+let cartBox = document.querySelector(".cart-box");
 let addToCartBtnArray = document.querySelectorAll(".add-cart");
 let cartIcon = document.querySelector(".cart-icon");
 let cart = document.querySelector(".cart");
 let closeCart = document.querySelector(".close-cart");
 let cartRemove = document.querySelector(".cart-remove");
-let productPrice = document.querySelector(".product-price").textContent;
-console.log(productPrice);
+// let productPrice = document.querySelector(".product-price").textContent;
 let cartQuantity = document.querySelector(".cart-quantity");
-let quantity = cartQuantity.value
-console.log(cartQuantity);
-let totalPrice = document.querySelector(".total-price").textContent;
-console.log(totalPrice);
+// let quantity = cartQuantity.value
+let quantity = 0;
+let totalPrice = document.querySelector(".total-price");
 let total = 0;
+let shoppingCounter = [];
 let shoppingCart = [];
 // Open Cart
 cartIcon.addEventListener('click', function() {
@@ -44,41 +44,64 @@ function addToCartListener(){
     
   };
 };
-
 function addToCart(){
- 
   let cartTotal = document.querySelector('.cart-total');
   let product = event.target;
-  shoppingCart.push(product);
-  cartTotal.textContent = shoppingCart.length;
+  shoppingCounter.push(product);
+  cartTotal.textContent = shoppingCounter.length;
   generateCartCard();
 }
-
+//creates an object from the item added to cart.
+function addToCartObject(name, price){
+  header = name;
+  price = price;
+  return [header, price];
+}
+//function to calculate total price in cart.
+function cartSum(price){
+  totalPrice.textContent = (+totalPrice.textContent) + (+price);
+}
+//generates the HTML for every card in cart.
+function generateCart(menuName, price){
+  let newArticle = document.createElement("article");
+  quantity = cartQuantity;
+  let cardContent =`
+  <div class="cart-box">
+  <div class="detail-box">
+    <p class="title">${menuName}</p>
+    <p class="product-price">${price}</p>
+    <i class="fa fa-remove"></i>
+    <input class="cart-quantity" type="number" value="1" />
+  </div>
+  <button class="cart-remove">Remove</button>
+</div>`
+newArticle.innerHTML = cardContent;
+cartBox.append(newArticle);
+}
 function generateCartCard(){
   let article = event.target.parentNode;
-  let content = 
-  `<h2 class="product-title" translate="no">${db[category][i].name}</h2>
-  <figure>
-  <img class="product-img" src="${db[category][i].img}"/>
-  </figure>
-  <p translate="no">${db[category][i].dsc}</p>
-  <p class="price" translate="no">${db[category][i].price} sek</p>`;
+  let menuName = article.childNodes[0].innerText;
+  let menuPrice = article.childNodes[6].innerText
+  shoppingCart.push(addToCartObject(menuName, menuPrice))
+  generateCart(menuName, menuPrice);
+  cartSum(menuPrice);
 }
+function updateCart(){
 
+}
 // Add event listener to the remove button in the cart
 function handelCartRemove () {
-  let cartBox = document.querySelector(".cart-box");
   cartBox.style.display ="none";
   totalNumber = 0;
 }
 
-cartRemove.addEventListener('click', handelCartRemove);
+// cartRemove.addEventListener('click', handelCartRemove);
 
 // Add event listener to the change of product quantity, working on...
-cartQuantity.addEventListener('change', function(event){
-  total = total + productPrice * cartQuantity;
-  console.log(total);
-});
+// cartQuantity.addEventListener('change', function(event){
+//   let productPrice = document.querySelector(".product-price").textContent;
+//   total = total + productPrice * cartQuantity;
+// });
 
 function generateFoodList(category){
   for (let i = 0; i < db[category].length; i++) {
@@ -89,7 +112,7 @@ function generateFoodList(category){
     <img class="product-img" src="${db[category][i].img}"/>
     </figure>
     <p translate="no">${db[category][i].dsc}</p>
-    <p class="price" translate="no">${db[category][i].price} sek</p>
+    <p class="price" translate="no">${db[category][i].price}</p>
     <button class="add-cart buttonStyle">Add to cart</button>`;
     newArticle.className = "card";
     newArticle.innerHTML = foodContent;
