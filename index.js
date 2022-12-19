@@ -1,12 +1,13 @@
-let main = document.querySelector('main');
+let main = document.querySelector("main");
 let foodCategory = document.querySelector("nav .food-category");
 let drinksCategory = document.querySelector("nav .drinks-category");
 let bestFoodCategory = document.querySelector("nav .home");
-let sweetsCategory = document.querySelector("nav .sweets-category")
-foodCategory.addEventListener('click', openFoodMenu);
-drinksCategory.addEventListener('click', openDrinksMenu);
-bestFoodCategory.addEventListener('click', openHighlightsMenu);
-sweetsCategory.addEventListener('click', openSweetsMenu)
+let sweetsCategory = document.querySelector("nav .sweets-category");
+let tableSelector = document.querySelector(".table-selector");
+foodCategory.addEventListener("click", openFoodMenu);
+drinksCategory.addEventListener("click", openDrinksMenu);
+bestFoodCategory.addEventListener("click", openHighlightsMenu);
+sweetsCategory.addEventListener("click", openSweetsMenu);
 
 // Cart
 let cartIcon = document.querySelector(".cart-icon");
@@ -64,7 +65,36 @@ cartQuantity.addEventListener('change', function(event){
 });
 
 
-function generateFoodList(category){
+// Choose which table you're sitting at
+
+//Creates the pop-up to set table number.
+function createTableSelector() {
+  tableSelector.innerHTML = `
+    <div class="options-container">
+    <h2 class="options-container-text">What table are you sitting at?</h2>
+      <input type="number" id="tables"></input>
+      <button onclick="tableNumber()">Submit</button>
+    </div>
+  `;
+}
+
+createTableSelector();
+
+//Function to save the users table number.
+function tableNumber() {
+  let userNumber = document.getElementById("tables").value;
+
+  console.log(userNumber);
+
+  clearTableSelection();
+}
+
+//Function to remove pop-up for table selection.
+function clearTableSelection(){
+  tableSelector.remove();
+}
+
+function generateFoodList(category) {
   for (let i = 0; i < db[category].length; i++) {
     let newArticle = document.createElement("article");
     let foodContent = 
@@ -80,8 +110,8 @@ function generateFoodList(category){
     main.append(newArticle);
   }
 }
-function foodCategories(){
-  let newDiv = document.createElement('div');
+function foodCategories() {
+  let newDiv = document.createElement("div");
   let categories = `
   <button class = "bbqs categoryBtn buttonStyle">bbqs</button>
   <button class = "steaks categoryBtn buttonStyle">steaks</button>
@@ -91,17 +121,17 @@ function foodCategories(){
   <button class = "pizzas categoryBtn buttonStyle">pizzas</button>
   <button class = "burgers categoryBtn buttonStyle">burgers</button>
   <button class = "sandwiches categoryBtn buttonStyle">sandwiches</button>
-  <button class = "breads categoryBtn buttonStyle">breads</button>`
+  <button class = "breads categoryBtn buttonStyle">breads</button>`;
   newDiv.innerHTML = categories;
   newDiv.className = "foodCategories";
   main.append(newDiv);
 }
-function sweetsCategories(){
-  let newDiv = document.createElement('div');
+function sweetsCategories() {
+  let newDiv = document.createElement("div");
   let categories = `
   <button class = "desserts categoryBtn buttonStyle">Desserts</button>
   <button class = "chocolates categoryBtn buttonStyle">Chocolates</button>
-  <button class = "ice-cream categoryBtn buttonStyle">Ice-cream</button>`
+  <button class = "ice-cream categoryBtn buttonStyle">Ice-cream</button>`;
   newDiv.innerHTML = categories;
   newDiv.className = "sweetsCategories";
   main.append(newDiv);
@@ -109,94 +139,94 @@ function sweetsCategories(){
 function clearMenu() {
   main.innerHTML = "";
 }
- function openDrinksMenu(){
+function openDrinksMenu() {
   clearMenu();
-   generateFoodList("drinks");
- }
- function openHighlightsMenu(){
+  generateFoodList("drinks");
+}
+function openHighlightsMenu() {
   clearMenu();
-   generateFoodList("best-foods");
- }
- function openSweetsMenu(){
+  generateFoodList("best-foods");
+}
+function openSweetsMenu() {
   clearMenu();
   sweetsCategories();
-  let desserts = document.querySelector('main .desserts');
-  desserts.addEventListener('click', openDesserts);
-  let chocolates = document.querySelector('main .chocolates');
-  chocolates.addEventListener('click', openChocolates);
-  let icecream = document.querySelector('main .ice-cream');
-  icecream.addEventListener('click', openIcecream);
- }
- function openDesserts(){
+  let desserts = document.querySelector("main .desserts");
+  desserts.addEventListener("click", openDesserts);
+  let chocolates = document.querySelector("main .chocolates");
+  chocolates.addEventListener("click", openChocolates);
+  let icecream = document.querySelector("main .ice-cream");
+  icecream.addEventListener("click", openIcecream);
+}
+function openDesserts() {
   clearMenu();
   generateFoodList("desserts");
- }
- function openChocolates(){
+}
+function openChocolates() {
   clearMenu();
-  generateFoodList("chocolates")
- }
- function openIcecream(){
+  generateFoodList("chocolates");
+}
+function openIcecream() {
   clearMenu();
-  generateFoodList("ice-cream")
- }
+  generateFoodList("ice-cream");
+}
 function openFoodMenu() {
   clearMenu();
   foodCategories();
-  let bbqs = document.querySelector('main .bbqs');
-  bbqs.addEventListener('click', openBbqs)
-  let steaks = document.querySelector('main .steaks');
-  steaks.addEventListener('click', opensteaks)
-  let porks = document.querySelector('main .porks');
-  porks.addEventListener('click', openporks)
-  let fried = document.querySelector('main .fried');
-  fried.addEventListener('click', openfried)
-  let sausages = document.querySelector('main .sausages');
-  sausages.addEventListener('click', opensausages)
-  let pizzas = document.querySelector('main .pizzas');
-  pizzas.addEventListener('click', openpizzas)
-  let burgers = document.querySelector('main .burgers');
-  burgers.addEventListener('click', openburgers)
-  let sandwiches = document.querySelector('main .sandwiches');
-  sandwiches.addEventListener('click', opensandwiches)
-  let breads = document.querySelector('main .breads');
-  breads.addEventListener('click', openbreads)
- }
- function openBbqs(){
+  let bbqs = document.querySelector("main .bbqs");
+  bbqs.addEventListener("click", openBbqs);
+  let steaks = document.querySelector("main .steaks");
+  steaks.addEventListener("click", opensteaks);
+  let porks = document.querySelector("main .porks");
+  porks.addEventListener("click", openporks);
+  let fried = document.querySelector("main .fried");
+  fried.addEventListener("click", openfried);
+  let sausages = document.querySelector("main .sausages");
+  sausages.addEventListener("click", opensausages);
+  let pizzas = document.querySelector("main .pizzas");
+  pizzas.addEventListener("click", openpizzas);
+  let burgers = document.querySelector("main .burgers");
+  burgers.addEventListener("click", openburgers);
+  let sandwiches = document.querySelector("main .sandwiches");
+  sandwiches.addEventListener("click", opensandwiches);
+  let breads = document.querySelector("main .breads");
+  breads.addEventListener("click", openbreads);
+}
+function openBbqs() {
   clearMenu();
   generateFoodList("bbqs");
  }
  function opensteaks (){
   clearMenu();
   generateFoodList("steaks");
- }
- function openporks (){
+}
+function openporks() {
   clearMenu();
   generateFoodList("porks");
- }
- function openfried (){
+}
+function openfried() {
   clearMenu();
   generateFoodList("fried-chicken");
- }
- function opensausages (){
+}
+function opensausages() {
   clearMenu();
   generateFoodList("sausages");
- }
- function openpizzas (){
+}
+function openpizzas() {
   clearMenu();
   generateFoodList("pizzas");
- }
- function openburgers (){
+}
+function openburgers() {
   clearMenu();
   generateFoodList("burgers");
- }
- function opensandwiches (){
+}
+function opensandwiches() {
   clearMenu();
   generateFoodList("sandwiches");
- }
- function openbreads (){
+}
+function openbreads() {
   clearMenu();
   generateFoodList("breads");
- }
+}
 
 
 // translate
