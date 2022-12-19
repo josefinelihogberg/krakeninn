@@ -4,6 +4,12 @@ body,html{
     top: 0px !important;
     overflow: hidden;
 }
+*{
+    font-family: 'Pirata One', cursive;
+}
+body{
+    height: 100vh;
+}
 .google-translate-bar {
   position: absolute;
 }
@@ -90,6 +96,10 @@ body,html{
 .main-nav button:active{
     box-shadow: 0 0 6px rgb(121, 1, 1);
 }
+main{
+    overflow: scroll;
+    height: 95%;
+}
 
 .search-item{
     padding: .5em;
@@ -101,6 +111,7 @@ body,html{
   display: flex;
   justify-content: center;
   margin-top: 1em;
+  height: 3em;
 }
 
 .search-container input {
@@ -122,7 +133,7 @@ body,html{
 }
 
 .menu-container {
-  height: 70%;
+  height: 70vh;
   overflow: scroll;
   margin-top: 1em;
 }
@@ -228,115 +239,6 @@ body,html{
 }
 .categoryBtn:last-child{
     margin-bottom: 3em;
-}
-
-/* Cart*/
-.cart {
-  position: fixed;
-  display: none;
-  width: 300px;
-  padding: 20px;
-  box-shadow: 1px 1px 3px rgb(175, 149, 0);
-  margin-top: -5em;
-  background-color: bisque;
-}
-.cart.active {
-  display: block;
-  right: 0;
-  top: 36%;
-}
-
-.close-cart {
-  position: absolute;
-  top: 1em;
-  right: 1rem;
-  font-size: 2rem;
-  cursor: pointer;
-}
-
-.cart-icon {
-  font-size: 2em;
-  padding: 0.5em;
-  cursor: pointer;
-  position: relative;
-}
-
-.cart-total {
-  margin-left: 0.5em;
-  padding: 0.2em;
-  width: 1em;
-  height: 1em;
-  background-color: rgb(121, 1, 1);
-  color: white;
-  font-size: 0.8em;
-  border-radius: 50px;
-  position: absolute;
-  text-align: center;
-}
-
-.cart-title {
-  font-size: 2em;
-  font-weight: 700;
-  text-align: center;
-  margin-top: 1em;
-}
-
-.cart-img {
-  width: 100px;
-  height: auto;
-  object-fit: cover;
-  border-radius: 5px;
-}
-
-.cart-box {
-  margin-top: 1em;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 0.8em;
-  align-items: center;
-}
-
-.detail-box {
-  display: flex;
-  gap: 1em;
-  align-items: center;
-}
-.cart-quantity {
-  width: 2.5em;
-  height: 2.5em;
-  font: 2.5em;
-  background-color: #f3f3f3;
-  opacity: 0.8;
-  border-radius: 3px;
-  border: none;
-}
-
-.cart-remove {
-  padding: 12px 20px;
-  border: none;
-  border-radius: 2px;
-  background: rgb(175, 149, 0);
-  color: white;
-  font-size: 1rem;
-  font-weight: 500;
-  border-radius: 0.5em;
-  cursor: pointer;
-}
-.total {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 1em;
-  border-top: 1px solid grey;
-  padding: 0.8em;
-}
-
-.total-title {
-  font-weight: 600;
-}
-.total-price {
-  margin-left: 0.5em;
-  color: rgb(121, 1, 1);
 }
 
 /* Cart*/

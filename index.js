@@ -210,3 +210,6 @@ function googleTranslateElementInit() {
       'google_translate_element'
   );
 }
+
+//starts when opening site
+openHighlightsMenu();
