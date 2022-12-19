@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+      integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap"
+      rel="stylesheet" />
+    <!--  icon  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script src="db.js"></script>
+    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Kraken inn, the greatest resturant</title>
+  </head>
+  <body>
+    <div id="google_translate_element" style="display:none"></div>
+    <img class="main-background" src="assets/background.jpg" alt="background" />
+
+    <!-- translate -->
+    
+    <div class="lang-btn">
+      <button class="lang" translate="no" value="sv" id="lang-sv" data-lang-sv onclick="ChangeSwe()"><img class="flag" src="assets/swedish.png" alt=""></button>
+      <button class="lang" id="lang-en" value="en" translate="no" data-lang-en onclick="changeEng()"><img class="flag" src="assets/english.png" alt=""></button>
+    </div>
+    
+  
+
+    <header class="header-container">
+
+      <img
+        class="header-pic"
+        src="assets/headerpicture (2).png"
+        alt="Goldcoin" />
+      <div class="header-container">
+        <h1 class="main-header-text main-header-left" translate="no">The Kraken</h1>
+        <h1 class="main-header-text main-header-right" translate="no">Inn</h1>
+      </div>
+    </header>
+    <nav class="main-nav">
+      <img src="assets/navbackground-taller.png" alt="" />
+      <button class="home buttonStyle">Home</button>
+      <button class="food-category buttonStyle">Food</button>
+      <button class="drinks-category buttonStyle">Drinks</button>
+      <button class="sweets-category buttonStyle">Sweets</button>
+    </nav>
+    <div class="search-container">
+      <input class="search-item" type="text" placeholder="search for food..." />
+      <button type="submit"><i class="fa fa-search"></i></button>
+      <i class="fa fa-shopping-cart cart-icon"
+        ><span class="cart-total">0</span></i
+      >
+    </div>
+    <main>
+      <button class="add-cart">Add to cart</button>
+      <button class="add-cart">Add to cart</button>
+      <button class="add-cart">Add to cart</button>
+    </main>
+
+    <!--Cart -->
+    <div class="cart">
+      <h2 class="cart-title">Your Cart</h2>
+      <!--Cart Content -->
+      <div class="cart-content">
+        <div class="cart-box">
+          <img
+            class="cart-img"
+            src="https://goldbelly.imgix.net/uploads/showcase_media_asset/image/110906/bo-ssam-dinner-for-4.c4a32e8801e2f0283e0565bbe8493149.jpg?ixlib=react-9.0.2&auto=format&ar=1%3A1"
+            alt="" />
+          <div class="detail-box">
+            <p class="title">Momofuku</p>
+            <p class="product-price">169</p>
+            <i class="fa fa-remove"></i>
+            <input class="cart-quantity" type="number" value="1" />
+          </div>
+          <button class="cart-remove">remove</button>
+        </div>
+      </div>
+      <!-- Total -->
+      <div class="total">
+        <div class="total-title">Total:</div>
+        <div class="total-price">169</div>
+      </div>
+      <!-- Buy Button -->
+      <button class="pay-btn">Pay Now</button>
+      <button class="pay-btn">Pay Later</button>
+      <button class="pay-btn">Pay with my balance</button>
+      <!-- Cart Close -->
+      <i class="fa fa-remove close-cart"></i>
+    </div>
+
+    <script
+      type="text/javascript"
+      src="https://translate.google.com/translate_a/element.js?
+cb=googleTranslateElementInit"></script>
+  </body>
+</html>

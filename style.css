@@ -1,0 +1,369 @@
+@import url('https://fonts.googleapis.com/css2?family=Pirata+One&display=swap');
+body,html{
+    font-family: 'Pirata One', cursive;
+    top: 0px !important;
+    overflow: hidden;
+}
+*{
+    font-family: 'Pirata One', cursive;
+}
+body{
+    height: 100vh;
+}
+
+
+
+
+.main-background{
+    position: absolute;
+    z-index: -10;
+}
+.main-header-text{
+    font-size:2.1em;
+    color: rgb(175, 149, 0);
+}
+.header-container{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    height: 7.5em;
+}
+.main-header-left{
+    margin: auto 0 .5em .2em;
+    flex: 0 0 25%;
+}
+.main-header-right {
+  display: flex;
+  flex: 0 0 25%;
+  flex-direction: row-reverse;
+  margin: auto 0.2em 0.5em 0;
+}
+.header-pic{
+    width: 100%;
+    height: 7.5em;
+    object-fit: cover;
+    position: absolute;
+    z-index: -3;
+    box-shadow: 0 0 10px black;
+}
+.main-nav {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+.main-nav img {
+  width: 100%;
+  height: 4em;
+  position: absolute;
+  border: 2px;
+  z-index: -5;
+}
+.main-nav button {
+  background-color: transparent;
+  min-width: 3em;
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 0.3em;
+  font-size: 1.5em;
+  margin: 0.3em 0 0.3em 0;
+  box-shadow: 0 0 5px black;
+  padding: 0.2em 0.2em 0.2em 0.2em;
+  color: rgb(121, 1, 1);
+}
+.main-nav button:active{
+    box-shadow: 0 0 6px rgb(121, 1, 1);
+}
+main{
+    overflow: scroll;
+    height: 95%;
+}
+
+.search-item{
+    padding: .5em;
+    width: 15em;
+    text-align: center;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+  height: 3em;
+}
+
+.search-container input {
+  padding: 0.5em;
+  border: 1px solid grey;
+  opacity: 0.5;
+  width: 30%;
+  border-radius: 0.5em 0 0 0.5em;
+}
+
+.search-container button {
+  width: 10%;
+  padding: 0.6em;
+  background-color: rgb(121, 1, 1);
+  color: white;
+  border: 1px solid grey;
+  border-left: none;
+  border-radius: 0 0.5em 0.5em 0;
+}
+
+.menu-container {
+  height: 70vh;
+  overflow: scroll;
+  margin-top: 1em;
+}
+
+.card {
+  margin: 2em auto 2em auto;
+  display: block;
+  width: 50%;
+}
+.card h2 {
+  font-size: 2.5em;
+  margin: 0 0 0.2em 0;
+}
+.card p {
+  font-size: 1.3em;
+}
+.card p,
+.card button {
+  margin: 0.5em;
+}
+.card img {
+  width: 100%;
+  border-radius: 1em;
+}
+.card button {
+  background-color: transparent;
+  min-width: 3em;
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 0.3em;
+  font-size: 1.5em;
+  margin: 0.3em 0 0.3em 0;
+  box-shadow: 0 0 5px black;
+  padding: 0.2em 0.2em 0.2em 0.2em;
+  color: rgb(121, 1, 1);
+}
+.menu-container{
+    height: 100%;
+    overflow: scroll;
+    margin-top: .5em;
+    align-items: center;
+}
+.menu-container main{
+    display: flex;
+    flex-wrap: wrap;
+    height: 100vh;
+}
+.foodCategories, .sweetsCategories{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 30em;
+    overflow:scroll;
+}
+.foodCategories button, .sweetsCategories button{
+    height: 10%;
+    width: 50%;
+}
+
+.card{
+    display: flex;
+    margin: 2em auto 2em auto;
+    display: block;
+    padding: .5em;
+    width: 42%;
+    min-height: 50%;
+    word-wrap:normal;
+    border: 3px solid black;
+    border-radius: 1em;
+}
+.card h2 {
+  font-size: 2.5em;
+  margin: 0 0 0.2em 0;
+}
+.card p {
+  font-size: 1.3em;
+}
+.card p,
+.card button {
+  margin: 0.5em;
+}
+.card img {
+  width: 100%;
+  border-radius: 1em;
+}
+.buttonStyle{
+    background-color: transparent;
+    border: 2px solid black;
+    border-radius: .3em;
+    font-size: 1.8em;
+    box-shadow: 0 0 5px black;
+    color: rgb(121, 1, 1);
+}
+.card button{
+    min-width: 3em;
+    margin: .3em 0 .3em 0;
+}
+.categoryBtn{
+    min-width: 3em;
+    font-size: 1.8em;
+    margin: .3em 0 .3em 0;
+}
+.categoryBtn:last-child{
+    margin-bottom: 3em;
+}
+
+/* Cart*/
+.cart {
+  position: fixed;
+  display: none;
+  width: 300px;
+  padding: 20px;
+  box-shadow: 1px 1px 3px rgb(175, 149, 0);
+  margin-top: -5em;
+  background-color: bisque;
+}
+.cart.active {
+  display: block;
+  right: 0;
+  top: 36%;
+}
+
+.close-cart {
+  position: absolute;
+  top: 1em;
+  right: 1rem;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.cart-icon {
+  font-size: 2em;
+  padding: 0.5em;
+  cursor: pointer;
+  position: relative;
+}
+
+.cart-total {
+  margin-left: 0.5em;
+  padding: 0.2em;
+  width: 1em;
+  height: 1em;
+  background-color: rgb(121, 1, 1);
+  color: white;
+  font-size: 0.8em;
+  border-radius: 50px;
+  position: absolute;
+  text-align: center;
+}
+
+.cart-title {
+  font-size: 2em;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 1em;
+}
+
+.cart-img {
+  width: 100px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.cart-box {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.8em;
+  align-items: center;
+}
+.goog-te-banner-frame{
+    display:none !important;
+}
+
+.detail-box {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+}
+.cart-quantity {
+  width: 2.5em;
+  height: 2.5em;
+  font: 2.5em;
+  background-color: #f3f3f3;
+  opacity: 0.8;
+  border-radius: 3px;
+  border: none;
+}
+/* translate style */
+.goog-te-gadget-icon {
+    display:none;
+  }
+
+.cart-remove {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 2px;
+  background: rgb(175, 149, 0);
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 0.5em;
+  cursor: pointer;
+}
+.total {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1em;
+  border-top: 1px solid grey;
+  padding: 0.8em;
+}
+#google_translate_element {
+    text-align: right;
+}
+
+.total-title {
+  font-weight: 600;
+}
+.total-price {
+  margin-left: 0.5em;
+  color: rgb(121, 1, 1);
+}
+.lang-btn{
+    position: absolute;
+    margin-top: 0.4em;
+}
+
+.pay-btn,
+.cart-remove {
+  display: flex;
+  margin: 0.8em auto;
+  padding: 0.8em;
+  border: none;
+  border-radius: 2px;
+  background: rgb(175, 149, 0);
+  color: white;
+  font-size: 0.8em;
+  border-radius: 0.5em;
+  cursor: pointer;
+}
+.pay-btn:hover,
+.cart-remove:hover {
+  background: rgb(121, 1, 1);
+}
+.lang{
+    background: transparent;
+    border: none;
+}
+
+.flag{
+    width: 25px;
+    height: 15px;
+}
