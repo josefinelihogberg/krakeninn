@@ -15,7 +15,6 @@ let cartIcon = document.querySelector(".cart-icon");
 let cart = document.querySelector(".cart");
 let closeCart = document.querySelector(".close-cart");
 let cartRemove = document.querySelector(".cart-remove");
-// let productPrice = document.querySelector(".product-price").textContent;
 let cartQuantity = document.querySelector(".cart-quantity");
 // let quantity = cartQuantity.value
 let quantity = 0;
@@ -64,7 +63,6 @@ function cartSum(price){
 //generates the HTML for every card in cart.
 function generateCart(menuName, price){
   let newArticle = document.createElement("article");
-  quantity = cartQuantity;
   let cardContent =`
   <div class="cart-box">
   <div class="detail-box">
@@ -95,10 +93,10 @@ function handelCartRemove () {
 // cartRemove.addEventListener('click', handelCartRemove);
 
 // Add event listener to the change of product quantity, working on...
-// cartQuantity.addEventListener('change', function(event){
-//   let productPrice = document.querySelector(".product-price").textContent;
-//   total = total + productPrice * cartQuantity;
-// });
+cartQuantity.addEventListener('change', function(event){
+  let productPrice = document.querySelector(".product-price").textContent;
+  total = total + productPrice * cartQuantity;
+});
 
 function generateFoodList(category){
   for (let i = 0; i < db[category].length; i++) {
