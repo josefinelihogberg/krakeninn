@@ -9,6 +9,62 @@ drinksCategory.addEventListener("click", openDrinksMenu);
 bestFoodCategory.addEventListener("click", openHighlightsMenu);
 sweetsCategory.addEventListener("click", openSweetsMenu);
 
+// Cart
+let cartIcon = document.querySelector(".cart-icon");
+let cart = document.querySelector(".cart");
+let closeCart = document.querySelector(".close-cart");
+let products = document.querySelectorAll(".add-cart");
+let cartRemove = document.querySelector(".cart-remove");
+let productPrice = document.querySelector(".product-price").textContent;
+console.log(productPrice);
+let cartQuantity = document.querySelector(".cart-quantity");
+let quantity = cartQuantity.value
+console.log(cartQuantity);
+let totalPrice = document.querySelector(".total-price").textContent;
+console.log(totalPrice);
+let total = 0;
+let shoppingCart = [];
+// Open Cart
+cartIcon.addEventListener('click', function() {
+  cart.classList.add("active");
+  main.style.opacity = "0.5";
+  main.style.transition = "800ms";
+});
+
+// Close Cart
+closeCart.addEventListener('click', function() {
+  cart.classList.remove("active");
+});
+
+// Update the number of items in the cart
+function updateCart() {
+  for(let i = 0; i < products.length; i++) {
+      products[i].addEventListener('click', function(event) {
+          let product = event.target;
+          let cartTotal = document.querySelector('.cart-total');
+          shoppingCart.push(product);
+          cartTotal.textContent = shoppingCart.length; 
+      });
+  }
+}
+updateCart();
+
+// Add event listener to the remove button in the cart
+function handelCartRemove () {
+  let cartBox = document.querySelector(".cart-box");
+  cartBox.style.display ="none";
+  totalNumber = 0;
+}
+
+cartRemove.addEventListener('click', handelCartRemove);
+
+// Add event listener to the change of product quantity, working on...
+cartQuantity.addEventListener('change', function(event){
+  total = total + productPrice * cartQuantity;
+  console.log(total);
+});
+
+
 // Choose which table you're sitting at
 
 //Creates the pop-up to set table number.
@@ -41,13 +97,14 @@ function clearTableSelection(){
 function generateFoodList(category) {
   for (let i = 0; i < db[category].length; i++) {
     let newArticle = document.createElement("article");
-    let foodContent = `<h2>${db[category][i].name}</h2>
+    let foodContent = 
+    `<h2 class="product-title" translate="no">${db[category][i].name}</h2>
     <figure>
-    <img src="${db[category][i].img}"/>
+    <img class="product-img" src="${db[category][i].img}"/>
     </figure>
-    <p>${db[category][i].dsc}</p>
-    <p>${db[category][i].price} sek</p>
-    <button class = "buttonStyle">Add to cart</button>`;
+    <p translate="no">${db[category][i].dsc}</p>
+    <p class="price" translate="no">${db[category][i].price} sek</p>
+    <button class="add-cart buttonStyle">Add to cart</button>`;
     newArticle.className = "card";
     newArticle.innerHTML = foodContent;
     main.append(newArticle);
@@ -137,9 +194,8 @@ function openFoodMenu() {
 function openBbqs() {
   clearMenu();
   generateFoodList("bbqs");
-  console.log("here");
-}
-function opensteaks() {
+ }
+ function opensteaks (){
   clearMenu();
   generateFoodList("steaks");
 }
@@ -172,17 +228,43 @@ function openbreads() {
   generateFoodList("breads");
 }
 
-// function that change the lang from swe to eng and the other way
+
+// translate
+
 function googleTranslateElementInit() {
-  new google.translate.TranslateElement(
-    {
-      pageLanguage: "en",
-      includedLanguages: "sv,en",
-      layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-    },
-    "google_translate_element"
-  );
+  new google.translate.TranslateElement({pageLanguage: "en"}, 'google_translate_element');
 }
 
-//starting functions
+function ChangeSwe(e) {
+  var lang = document.getElementById("lang-sv").value;
+  var selectField = document.querySelector("#google_translate_element select");
+  for(var i=0; i < selectField.children.length; i++){
+    var option = selectField.children[i];
+    // find desired langauge and change the former language of the hidden selection-field 
+    if(option.value==lang){
+       selectField.selectedIndex = i;
+       // trigger change event afterwards to make google-lib translate this side
+       selectField.dispatchEvent(new Event('change'));
+       break;
+    }
+  }
+}
+
+function changeEng(e) {
+  var lang = document.getElementById("lang-en").value;
+  var selectField = document.querySelector("#google_translate_element select");
+  for(var i=0; i < selectField.children.length; i++){
+    var option = selectField.children[i];
+    // find desired langauge and change the former language of the hidden selection-field 
+    if(option.value==lang){
+       selectField.selectedIndex = i;
+       // trigger change event afterwards to make google-lib translate this side
+       selectField.dispatchEvent(new Event('change'));
+       break;
+    }
+  }
+}
+
+
+//starts when opening site
 openHighlightsMenu();
