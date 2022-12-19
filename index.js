@@ -61,11 +61,8 @@ function handelCartRemove () {
 
 cartRemove.addEventListener('click', handelCartRemove);
 
-// Add event listener to the change of product quantity, working on...
-cartQuantity.addEventListener('change', function(event){
-  total = total + productPrice * cartQuantity;
-  console.log(total);
-});
+
+
 
 
 function generateFoodList(category){
