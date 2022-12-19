@@ -86,9 +86,6 @@ function generateCartCard(){
   generateCart(menuName, menuPrice);
   cartSum(menuPrice);
 }
-function updateCart(){
-
-}
 // Add event listener to the remove button in the cart
 function handelCartRemove () {
   cartBox.style.display ="none";
