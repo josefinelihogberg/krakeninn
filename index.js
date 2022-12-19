@@ -84,24 +84,7 @@ function createFormMoneyInput(){
 createFormMoneyInput()
 
 
-const testList = [ {
-  "id": "ribs-brisket-and-burnt-ends",
-  "img": "https://goldbelly.imgix.net/uploads/showcase_media_asset/image/79619/joes-kc-ribs-brisket-and-burnt-ends.6710e994980e485e6441b794717ad6fb.jpg?ixlib=react-9.0.2&auto=format&ar=1%3A1",
-  "name": "Joe's KC BBQ",
-  "dsc": "Joe's KC Ribs, Brisket & Burnt Ends",
-  "price": 110.99,
-  "rate": 4,
-  "country": "Kansas City, KS"
-},
-{
-  "id": "005-kings-carolina-oink-sampler",
-  "img": "https://goldbelly.imgix.net/uploads/showcase_media_asset/image/66752/carolina-bbq-oink-sampler.1340b5a10cedc238cb2280306dd1d5a5.jpg?ixlib=react-9.0.2&auto=format&ar=1%3A1",
-  "name": "Kings BBQ",
-  "dsc": "Carolina BBQ Oink Sampler",
-  "price": 89,
-  "rate": 4,
-  "country": "Kinston, NC"
-}]
+
 
 
 //this function takes the text of p2 , it accepts an array, an array of the fooods and drinkt that
