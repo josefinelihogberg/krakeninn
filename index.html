@@ -43,13 +43,50 @@
       <button class="food-category buttonStyle">Food</button>
       <button class="drinks-category buttonStyle">Drinks</button>
       <button class="sweets-category buttonStyle">Sweets</button>
+      <i class="fa fa-shopping-cart cart-icon"
+        ><span class="cart-total">0</span></i
+      >
     </nav>
     <div class="search-container">
       <input class="search-item" type="text" placeholder="search for food..." />
       <button type="submit"><i class="fa fa-search"></i></button>
     </div>
-    <div class="menu-container">
-      <main></main>
+    <main>
+      <button class="add-cart">Add to cart</button>
+      <button class="add-cart">Add to cart</button>
+      <button class="add-cart">Add to cart</button>
+    </main>
+
+    <!--Cart -->
+    <div class="cart">
+      <h2 class="cart-title">Your Cart</h2>
+      <!--Cart Content -->
+      <div class="cart-content">
+        <div class="cart-box">
+          <img
+            class="cart-img"
+            src="https://goldbelly.imgix.net/uploads/showcase_media_asset/image/110906/bo-ssam-dinner-for-4.c4a32e8801e2f0283e0565bbe8493149.jpg?ixlib=react-9.0.2&auto=format&ar=1%3A1"
+            alt="" />
+          <div class="detail-box">
+            <p class="title">Momofuku</p>
+            <p class="product-price">169</p>
+            <i class="fa fa-remove"></i>
+            <input class="cart-quantity" type="number" value="1" />
+          </div>
+          <button class="cart-remove">remove</button>
+        </div>
+      </div>
+      <!-- Total -->
+      <div class="total">
+        <div class="total-title">Total:</div>
+        <div class="total-price">169</div>
+      </div>
+      <!-- Buy Button -->
+      <button class="pay-btn">Pay Now</button>
+      <button class="pay-btn">Pay Later</button>
+      <button class="pay-btn">Pay with my balance</button>
+      <!-- Cart Close -->
+      <i class="fa fa-remove close-cart"></i>
     </div>
 
     <script
