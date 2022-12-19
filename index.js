@@ -43,17 +43,27 @@ function addToCartListener(){
     addToCartBtnArray[i].addEventListener('click',addToCart);
     
   };
-  console.log("222");
- 
 };
 
 function addToCart(){
+ 
   let cartTotal = document.querySelector('.cart-total');
   let product = event.target;
   shoppingCart.push(product);
-  cartTotal.textContent = shoppingCart.length; 
+  cartTotal.textContent = shoppingCart.length;
+  generateCartCard();
 }
 
+function generateCartCard(){
+  let article = event.target.parentNode;
+  let content = 
+  `<h2 class="product-title" translate="no">${db[category][i].name}</h2>
+  <figure>
+  <img class="product-img" src="${db[category][i].img}"/>
+  </figure>
+  <p translate="no">${db[category][i].dsc}</p>
+  <p class="price" translate="no">${db[category][i].price} sek</p>`;
+}
 
 // Add event listener to the remove button in the cart
 function handelCartRemove () {
@@ -69,7 +79,6 @@ cartQuantity.addEventListener('change', function(event){
   total = total + productPrice * cartQuantity;
   console.log(total);
 });
-
 
 function generateFoodList(category){
   for (let i = 0; i < db[category].length; i++) {
