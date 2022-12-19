@@ -1,7 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Pirata+One&display=swap');
-body,html{
-    font-family: 'Pirata One', cursive;
-    top: 0px !important;
+@import url("https://fonts.googleapis.com/css2?family=Pirata+One&display=swap");
+body,
+html {
+  font-family: "Pirata One", cursive;
+  top: 0px !important;
     overflow: hidden;
 }
 *{
@@ -30,9 +31,9 @@ body{
     justify-content: space-between;
     height: 7.5em;
 }
-.main-header-left{
-    margin: auto 0 .5em .2em;
-    flex: 0 0 25%;
+.main-header-left {
+  margin: auto 0 0.5em 0.2em;
+  flex: 0 0 25%;
 }
 .main-header-right {
   display: flex;
@@ -333,6 +334,28 @@ main{
     text-align: right;
 }
 
+.table-selector form select {
+  width: 70%;
+  height: 50px;
+  font-size: xx-large;
+  display: block;
+  margin: 10px auto;
+}
+
+.table-selector form input {
+  width: 50%;
+  font-size: xx-large;
+  display: block;
+  margin: auto;
+}
+
+.table-selector form select {
+  width: 70%;
+  height: 50px;
+  font-size: xx-large;
+  display: block;
+  margin: 10px auto;
+}
 .total-title {
   font-weight: 600;
 }
@@ -366,7 +389,22 @@ main{
     background: transparent;
     border: none;
 }
+.table-selector form input {
+  width: 50%;
+  font-size: xx-large;
+  display: block;
+  margin: auto;
+}
 
+.table-selector {
+  margin: auto;
+  margin-top: 5em;
+  padding: 10px;
+  border: 2px solid black;
+
+  width: 85%;
+  background-color: rgb(215, 208, 172);
+}
 .flag{
     width: 25px;
     height: 15px;
