@@ -11,17 +11,27 @@ let cartIcon = document.querySelector(".cart-icon");
 let cart = document.querySelector(".cart");
 let closeCart = document.querySelector(".close-cart");
 let products = document.querySelectorAll(".add-cart");
+let cartRemove = document.querySelector(".cart-remove");
+let productPrice = document.querySelector(".product-price").textContent;
+console.log(productPrice);
+let cartQuantity = document.querySelector(".cart-quantity");
+let quantity = cartQuantity.value
+console.log(cartQuantity);
+let totalPrice = document.querySelector(".total-price").textContent;
+console.log(totalPrice);
+let total = 0;
 let shoppingCart = [];
-
 // Open Cart
-cartIcon.onclick = function() {
+cartIcon.addEventListener('click', function() {
   cart.classList.add("active");
-};
+  main.style.opacity = "0.5";
+  main.style.transition = "800ms";
+});
 
 // Close Cart
-closeCart.onclick = function() {
+closeCart.addEventListener('click', function() {
   cart.classList.remove("active");
-};
+});
 
 // Update the number of items in the cart
 function updateCart() {
@@ -35,6 +45,21 @@ function updateCart() {
   }
 }
 updateCart();
+
+// Add event listener to the remove button in the cart
+function handelCartRemove () {
+  let cartBox = document.querySelector(".cart-box");
+  cartBox.style.display ="none";
+  totalNumber = 0;
+}
+
+cartRemove.addEventListener('click', handelCartRemove);
+
+// Add event listener to the change of product quantity, working on...
+cartQuantity.addEventListener('change', function(event){
+  total = total + productPrice * cartQuantity;
+  console.log(total);
+});
 
 
 function generateFoodList(category){
