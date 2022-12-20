@@ -144,7 +144,7 @@ function generateFoodList(category) {
     <figure>
     <img class="product-img" src="${db[category][i].img}"/>
     </figure>
-    <p translate="no">${db[category][i].dsc}</p>
+    <p>${db[category][i].dsc}</p>
     <p class="price" translate="no">${db[category][i].price}</p>
     <button class="add-cart buttonStyle">Add to cart</button>`;
     newArticle.className = "card";
