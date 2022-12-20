@@ -51,6 +51,7 @@ function addToCart(){
   shoppingCounter.push(product);
   cartTotal.textContent = shoppingCounter.length;
   generateCartCard();
+  
 }
 //creates an object from the item added to cart.
 function addToCartObject(name, price){
@@ -95,6 +96,7 @@ function generateCartCard(){
   console.log(shoppingCart);
   generateCart(menuName, menuPrice);
   cartSum(menuPrice);
+  updateSpendMoneyDisplay(shoppingCart);
 }
 // Add event listener to the remove button in the cart
 function handelCartRemove () {
@@ -153,6 +155,7 @@ function generateFoodList(category) {
     main.append(newArticle);
   }
   addToCartListener();
+ 
 }
 
 function foodCategories() {
@@ -317,7 +320,7 @@ function changeEng(e) {
 //this function creates an input where the costumer can put in an amount
 //of money that he/she wants to spend during the night. This amount will
 //be appended to a p tag somewhere on the page.
-/*
+
 function createFormMoneyInput(){
   let moneyForm = document.createElement('form');
   let moneyAmountInput = document.createElement('input');
@@ -347,58 +350,35 @@ function createFormMoneyInput(){
   
   })
 }
-
+createFormMoneyInput();
 function clearFormInput(){
   moneyForm.remove();
 }
-createFormMoneyInput();
-const testList = 
-   [
-    {
-      "id": "ribs-brisket-and-burnt-ends",
-      "img": "https://goldbelly.imgix.net/uploads/showcase_media_asset/image/79619/joes-kc-ribs-brisket-and-burnt-ends.6710e994980e485e6441b794717ad6fb.jpg?ixlib=react-9.0.2&auto=format&ar=1%3A1",
-      "name": "Joe's KC BBQ",
-      "dsc": "Joe's KC Ribs, Brisket & Burnt Ends",
-      "price": 110.99,
-      "rate": 4,
-      "country": "Kansas City, KS"
-    },
-    {
-      "id": "005-kings-carolina-oink-sampler",
-      "img": "https://goldbelly.imgix.net/uploads/showcase_media_asset/image/66752/carolina-bbq-oink-sampler.1340b5a10cedc238cb2280306dd1d5a5.jpg?ixlib=react-9.0.2&auto=format&ar=1%3A1",
-      "name": "Kings BBQ",
-      "dsc": "Carolina BBQ Oink Sampler",
-      "price": 89,
-      "rate": 4,
-      "country": "Kinston, NC"
-    }]
+//createFormMoneyInput();
+
 //this function takes the text of p2 , it accepts an array, an array of the fooods and drinkt that
 //the costumer orders. The function add the prices togehter and then substract it 
 //from the amount of the p2 tag and gives it the new value.
 function updateSpendMoneyDisplay(arr) {
   moneyP = document.querySelector('.moneyP')
   let counter = moneyP.innerText;
-  console.log(parseInt(counter))
+  //console.log(parseInt(counter))
  
  
   console.log(counter)
-  let newCounterArr = arr.map(function(element){
-    return element.price;
-    
-  })
-  console.log(newCounterArr);
-  //return newCounterArr;
+  //let priceArray = "";
   let sum = 0;
-  for (let item of newCounterArr){
-  sum += item;
+  for (i = 0; i < arr.length; i++){
+    let newPrices = parseInt((arr[i][1]));
+    console.log(newPrices);
+    sum += newPrices;
+    console.log(sum);
   }
-  console.log(sum);
   moneyP.innerText = (parseInt(counter)) - sum;
   return (parseInt(counter)) - sum;
-
 }
 
-*/
+
 
 //starts when opening site
 openHighlightsMenu();
