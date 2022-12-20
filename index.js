@@ -317,13 +317,13 @@ function createFormMoneyInput(){
   let moneyAmountInput = document.createElement('input');
   let moneyAmountSubmitBtn = document.createElement('button');
   moneyAmountSubmitBtn.innerText = 'add my money';
- moneyAmountInput.setAttribute('type', 'text')
+  moneyAmountInput.setAttribute('type', 'text')
   cart.append(moneyForm);
   moneyForm.append(moneyAmountInput);
   moneyForm.append(moneyAmountSubmitBtn);
   moneyForm.addEventListener('submit', function(event){
     event.preventDefault();
-    let amountH2 = document.querySelector('h2');
+    let amountH2 = document.createElement('h2');
     amountH2.innerText = 'you have this much left to spend:';
     let moneyAmountP = document.createElement('p');
     moneyAmountP.classList.add("moneyP");
