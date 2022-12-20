@@ -65,14 +65,14 @@ function cartSum(price){
 function generateCart(menuName, price){
   let newArticle = document.createElement("article");
   let cardContent =`
-  <div class="cart-box">
+  <div class="cart-box image.png">
   <div class="detail-box">
     <p class="title">${menuName}</p>
     <p class="product-price">${price}</p>
     <i class="fa fa-remove"></i>
-    <input class="cart-quantity" type="number" value="1" />
+    <input class="cart-quantity" type="number" value="1"/>
   </div>
-  <button class="cart-remove">Remove</button>
+  <button class="cart-remove" translate="no">Remove</button>
 </div>`
 newArticle.innerHTML = cardContent;
 cartBox.append(newArticle);
@@ -81,15 +81,15 @@ function generateCartCard(){
   let article = event.target.parentNode;
   let menuName ="";
   let menuPrice = 0;
+  console.log(article.childNodes);
   for (let i = 0; i < article.childNodes.length; i++) {
     if (article.childNodes[i].className == "product-title"){
       menuName = article.childNodes[i].innerText;
     }
     if (article.childNodes[i].className == "price") {
-      menuPrice = article.childNodes[i].innerText
+      menuPrice = article.childNodes[i].innerText;
     }
   }
-  console.log(article.childNodes);
   shoppingCart.push(addToCartObject(menuName, menuPrice))
   console.log(shoppingCart);
   generateCart(menuName, menuPrice);
