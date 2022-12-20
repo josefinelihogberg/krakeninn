@@ -152,6 +152,8 @@ main{
     word-wrap:normal;
     border: 3px solid black;
     border-radius: 1em;
+    box-shadow: 0 0 10px rgb(121, 1, 1);
+    background-color: rgba(255, 255, 255, 0.336);
 }
 .card h2 {
   font-size: 2em;
