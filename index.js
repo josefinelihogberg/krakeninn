@@ -95,13 +95,11 @@ function generateCartCard(){
   shoppingCart.push(addToCartObject(menuName, menuPrice))
   console.log(shoppingCart);
   generateCart(menuName, menuPrice);
-  cartSum(menuPrice);
   updateSpendMoneyDisplay(menuPrice);
 }
 // Add event listener to the remove button in the cart
 function handelCartRemove () {
   cartBox.style.display ="none";
-  totalNumber = 0;
 }
 
 // cartRemove.addEventListener('click', handelCartRemove);
@@ -344,6 +342,7 @@ function updateSpendMoneyDisplay(productPrice) {
     alert("You dont have enough funds to buy this item");
   }else{
     moneyP.innerText = moneyP.innerText - parseInt(productPrice, 10);
+    cartSum(productPrice);
   }
 }
 //starts when opening site
