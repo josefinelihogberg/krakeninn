@@ -96,7 +96,7 @@ function generateCartCard(){
   console.log(shoppingCart);
   generateCart(menuName, menuPrice);
   cartSum(menuPrice);
-  updateSpendMoneyDisplay(shoppingCart);
+  updateSpendMoneyDisplay(menuPrice);
 }
 // Add event listener to the remove button in the cart
 function handelCartRemove () {
@@ -340,24 +340,14 @@ createFormMoneyInput();
 function clearFormInput(){
   moneyForm.remove();
 }
-//this function takes the text of p2 , it accepts an array, an array of the fooods and drinkt that
-//the costumer orders. The function add the prices togehter and then substract it 
-//from the amount of the p2 tag and gives it the new value.
-function updateSpendMoneyDisplay(arr) {
-  moneyP = document.querySelector('.moneyP')
-  let counter = moneyP.innerText;
-  console.log(counter);
-  let sum = 0;
-  for (i = 0; i < arr.length; i++){
-    let newPrices = parseInt((arr[i][1]));
-    console.log(newPrices);
-    sum += newPrices;
-    console.log(sum);
+//updates the remaining value in wallet.
+function updateSpendMoneyDisplay(productPrice) {
+  let moneyP = document.querySelector('.moneyP');
+  if (moneyP.innerText < parseInt(productPrice, 10)){
+    alert("You dont have enough funds to buy this item");
+  }else{
+    moneyP.innerText = moneyP.innerText - parseInt(productPrice, 10);
   }
-  moneyP.innerText = (parseInt(counter)) - sum;
-  return (parseInt(counter)) - sum;
 }
 //starts when opening site
 openHighlightsMenu();
-
-//updateSpendMoneyDisplay()
