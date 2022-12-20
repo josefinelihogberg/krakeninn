@@ -129,9 +129,6 @@ createTableSelector();
 //Function to save the users table number.
 function tableNumber() {
   let userNumber = document.getElementById("tables").value;
-
-  console.log(userNumber);
-
   clearTableSelection();
 }
 //Function to remove pop-up for table selection.
