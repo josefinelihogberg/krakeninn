@@ -23,12 +23,25 @@ let totalPrice = document.querySelector(".total-price").textContent;
 console.log(totalPrice);
 let total = 0;
 let shoppingCart = [];
+let payBtns = document.querySelectorAll(".pay-btn");
+// Add event listener to pay button in the cart
+function handelPayBtn() {
+  for(let i = 0; i < payBtns.length; i++) {
+    payBtns[i].addEventListener('click', payBtnClicked);
+  }
+} 
+function payBtnClicked() {
+  alert("Your Order is placed!");
+}
+
+handelPayBtn();
+
 // Open Cart
 cartIcon.addEventListener('click', function() {
   cart.classList.add("active");
   main.style.opacity = "0.5";
   main.style.transition = "800ms";
-});
+})
 
 // Close Cart
 closeCart.addEventListener('click', function() {
@@ -41,19 +54,16 @@ function addToCartListener(){
   let addToCartBtnArray = document.querySelectorAll(".add-cart");
   for (let i = 0; i < addToCartBtnArray.length; i++) {
     addToCartBtnArray[i].addEventListener('click',addToCart);
-    
   };
-  console.log("222");
- 
-};
+}
 
 function addToCart(){
   let cartTotal = document.querySelector('.cart-total');
   let product = event.target;
   shoppingCart.push(product);
+  console.log(shoppingCart);
   cartTotal.textContent = shoppingCart.length; 
 }
-
 
 // Add event listener to the remove button in the cart
 function handelCartRemove () {
