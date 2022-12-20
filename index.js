@@ -80,9 +80,19 @@ cartBox.append(newArticle);
 }
 function generateCartCard(){
   let article = event.target.parentNode;
-  let menuName = article.childNodes[0].innerText;
-  let menuPrice = article.childNodes[6].innerText
+  let menuName ="";
+  let menuPrice = 0;
+  for (let i = 0; i < article.childNodes.length; i++) {
+    if (article.childNodes[i].className == "product-title"){
+      menuName = article.childNodes[i].innerText;
+    }
+    if (article.childNodes[i].className == "price") {
+      menuPrice = article.childNodes[i].innerText
+    }
+  }
+  console.log(article.childNodes);
   shoppingCart.push(addToCartObject(menuName, menuPrice))
+  console.log(shoppingCart);
   generateCart(menuName, menuPrice);
   cartSum(menuPrice);
 }
