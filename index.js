@@ -312,15 +312,9 @@ function changeEng(e) {
     }
   }
 }
-
-
-
-
-
 //this function creates an input where the costumer can put in an amount
 //of money that he/she wants to spend during the night. This amount will
 //be appended to a p tag somewhere on the page.
-
 function createFormMoneyInput(){
   let moneyForm = document.createElement('form');
   let moneyAmountInput = document.createElement('input');
@@ -333,40 +327,26 @@ function createFormMoneyInput(){
   moneyForm.addEventListener('submit', function(event){
     event.preventDefault();
     let amountH2 = document.querySelector('h2');
-    amountH2.innerText = 'you have this much left to spend:'
-    
-    
+    amountH2.innerText = 'you have this much left to spend:';
     let moneyAmountP = document.createElement('p');
     moneyAmountP.classList.add("moneyP");
     let cartBox = document.querySelector(".cart-box");
-   
    cartBox.append(amountH2);
    cartBox.append(moneyAmountP);
-   //p2.innerText = moneyAmountP;
    moneyAmountP.innerText = `${moneyAmountInput.value}`;
-   //counter = moneyAmountInput.value;
-    //moneyAmountP.innerText = `Ditt saldo är: ${counter} kr`;
-  //moneyAmountInput = "";
-  
   })
 }
 createFormMoneyInput();
 function clearFormInput(){
   moneyForm.remove();
 }
-//createFormMoneyInput();
-
 //this function takes the text of p2 , it accepts an array, an array of the fooods and drinkt that
 //the costumer orders. The function add the prices togehter and then substract it 
 //from the amount of the p2 tag and gives it the new value.
 function updateSpendMoneyDisplay(arr) {
   moneyP = document.querySelector('.moneyP')
   let counter = moneyP.innerText;
-  //console.log(parseInt(counter))
- 
- 
-  console.log(counter)
-  //let priceArray = "";
+  console.log(counter);
   let sum = 0;
   for (i = 0; i < arr.length; i++){
     let newPrices = parseInt((arr[i][1]));
@@ -377,9 +357,6 @@ function updateSpendMoneyDisplay(arr) {
   moneyP.innerText = (parseInt(counter)) - sum;
   return (parseInt(counter)) - sum;
 }
-
-
-
 //starts when opening site
 openHighlightsMenu();
 
