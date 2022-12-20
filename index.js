@@ -87,9 +87,6 @@ function generateCartCard(){
     }
     if (article.childNodes[i].className == "price") {
       menuPrice = article.childNodes[i].innerText
-    }else{
-      alert("Order this item is faulty, contact kitchen");
-      break;
     }
   }
   console.log(article.childNodes);
