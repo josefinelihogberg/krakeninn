@@ -82,7 +82,7 @@ function generateCartCard(){
   let menuName ="";
   let menuPrice = 0;
   for (let i = 0; i < article.childNodes.length; i++) {
-    if (article.childNodes[i].className == "product-titlee"){
+    if (article.childNodes[i].className == "product-title"){
       menuName = article.childNodes[i].innerText;
     }
     if (article.childNodes[i].className == "price") {
