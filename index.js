@@ -317,7 +317,7 @@ function changeEng(e) {
 //this function creates an input where the costumer can put in an amount
 //of money that he/she wants to spend during the night. This amount will
 //be appended to a p tag somewhere on the page.
-
+/*
 function createFormMoneyInput(){
   let moneyForm = document.createElement('form');
   let moneyAmountInput = document.createElement('input');
@@ -398,7 +398,7 @@ function updateSpendMoneyDisplay(arr) {
 
 }
 
-
+*/
 
 //starts when opening site
 openHighlightsMenu();
