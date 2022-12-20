@@ -1,3 +1,4 @@
+
 let main = document.querySelector("main");
 let foodCategory = document.querySelector("nav .food-category");
 let drinksCategory = document.querySelector("nav .drinks-category");
@@ -62,6 +63,7 @@ function addToCart(){
   shoppingCounter.push(product);
   cartTotal.textContent = shoppingCounter.length;
   generateCartCard();
+  
 }
 //creates an object from the item added to cart.
 function addToCartObject(name, price){
@@ -77,14 +79,14 @@ function cartSum(price){
 function generateCart(menuName, price){
   let newArticle = document.createElement("article");
   let cardContent =`
-  <div class="cart-box">
+  <div class="cart-box image.png">
   <div class="detail-box">
     <p class="title">${menuName}</p>
     <p class="product-price">${price}</p>
     <i class="fa fa-remove"></i>
-    <input class="cart-quantity" type="number" value="1" />
+    <input class="cart-quantity" type="number" value="1"/>
   </div>
-  <button class="cart-remove">Remove</button>
+  <button class="cart-remove" translate="no">Remove</button>
 </div>`
 newArticle.innerHTML = cardContent;
 cartBox.append(newArticle);
@@ -93,24 +95,23 @@ function generateCartCard(){
   let article = event.target.parentNode;
   let menuName ="";
   let menuPrice = 0;
+  console.log(article.childNodes);
   for (let i = 0; i < article.childNodes.length; i++) {
     if (article.childNodes[i].className == "product-title"){
       menuName = article.childNodes[i].innerText;
     }
     if (article.childNodes[i].className == "price") {
-      menuPrice = article.childNodes[i].innerText
+      menuPrice = article.childNodes[i].innerText;
     }
   }
-  console.log(article.childNodes);
   shoppingCart.push(addToCartObject(menuName, menuPrice))
   console.log(shoppingCart);
   generateCart(menuName, menuPrice);
-  cartSum(menuPrice);
+  updateSpendMoneyDisplay(menuPrice);
 }
 // Add event listener to the remove button in the cart
 function handelCartRemove () {
   cartBox.style.display ="none";
-  totalNumber = 0;
 }
 
 // cartRemove.addEventListener('click', handelCartRemove);
@@ -138,9 +139,6 @@ createTableSelector();
 //Function to save the users table number.
 function tableNumber() {
   let userNumber = document.getElementById("tables").value;
-
-  console.log(userNumber);
-
   clearTableSelection();
 }
 //Function to remove pop-up for table selection.
@@ -156,7 +154,7 @@ function generateFoodList(category) {
     <figure>
     <img class="product-img" src="${db[category][i].img}"/>
     </figure>
-    <p translate="no">${db[category][i].dsc}</p>
+    <p>${db[category][i].dsc}</p>
     <p class="price" translate="no">${db[category][i].price}</p>
     <button class="add-cart buttonStyle">Add to cart</button>`;
     newArticle.className = "card";
@@ -164,6 +162,7 @@ function generateFoodList(category) {
     main.append(newArticle);
   }
   addToCartListener();
+ 
 }
 
 function foodCategories() {
@@ -320,8 +319,44 @@ function changeEng(e) {
     }
   }
 }
-
-
+//this function creates an input where the costumer can put in an amount
+//of money that he/she wants to spend during the night. This amount will
+//be appended to a p tag somewhere on the page.
+function createFormMoneyInput(){
+  let moneyForm = document.createElement('form');
+  let moneyAmountInput = document.createElement('input');
+  let moneyAmountSubmitBtn = document.createElement('button');
+  moneyAmountSubmitBtn.innerText = 'add my money';
+  moneyAmountInput.setAttribute('type', 'text')
+  cart.append(moneyForm);
+  moneyForm.append(moneyAmountInput);
+  moneyForm.append(moneyAmountSubmitBtn);
+  moneyForm.addEventListener('submit', function(event){
+    event.preventDefault();
+    let amountH2 = document.createElement('h2');
+    amountH2.innerText = 'you have this much left to spend:';
+    let moneyAmountP = document.createElement('p');
+    moneyAmountP.classList.add("moneyP");
+    let cartBox = document.querySelector(".cart-box");
+   cartBox.append(amountH2);
+   cartBox.append(moneyAmountP);
+   moneyAmountP.innerText = `${moneyAmountInput.value}`;
+  })
+}
+createFormMoneyInput();
+function clearFormInput(){
+  moneyForm.remove();
+}
+//updates the remaining value in wallet.
+function updateSpendMoneyDisplay(productPrice) {
+  let moneyP = document.querySelector('.moneyP');
+  if (moneyP.innerText < parseInt(productPrice, 10)){
+    alert("You dont have enough funds to buy this item");
+  }else{
+    moneyP.innerText = moneyP.innerText - parseInt(productPrice, 10);
+    cartSum(productPrice);
+  }
+}
 //starts when opening site
 openHighlightsMenu();
 addPayBtnListner();

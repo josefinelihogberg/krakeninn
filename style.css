@@ -76,6 +76,8 @@ body {
   box-shadow: 0 0 6px rgb(121, 1, 1);
 }
 main {
+  display: flex;
+  flex-wrap: wrap;
   overflow: scroll;
   height: 95%;
 }
@@ -176,31 +178,22 @@ main {
 }
 
 .card {
-  display: flex;
-  margin: 2em auto 2em auto;
+  position: relative;
   display: block;
+  margin: 2em auto 2em auto;
   padding: 0.5em;
-  width: 42%;
+  width: 40%;
   min-height: 50%;
   word-wrap: normal;
   border: 3px solid black;
   border-radius: 1em;
-}
-
-.card:hover {
-  display: flex;
-  margin: 2em auto 2em auto;
-  display: block;
-  padding: 0.5em;
-  width: 42%;
-  min-height: 50%;
-  word-wrap: normal;
-  border: 3px solid black;
-  border-radius: 1em;
+  box-shadow: 0 0 10px rgb(121, 1, 1);
+  background-color: rgba(255, 255, 255, 0.336);
 }
 .card h2 {
-  font-size: 2.5em;
-  margin: 0 0 0.2em 0;
+  font-size: 2em;
+  min-height: 2em;
+  margin: 0 0 0.5em 0;
 }
 .card p {
   font-size: 1.3em;
@@ -209,9 +202,13 @@ main {
 .card button {
   margin: 0.5em;
 }
+.card .price::after {
+  content: " Sek";
+}
 .card img {
   width: 100%;
   border-radius: 1em;
+  box-shadow: 0 0 7px black;
 }
 .buttonStyle {
   background-color: transparent;
@@ -246,6 +243,7 @@ main {
   background-color: bisque;
   overflow: scroll;
 }
+
 .cart.active {
   display: block;
   right: 0;
@@ -421,8 +419,4 @@ main {
 .flag {
   width: 25px;
   height: 15px;
-}
-
-.table-selector {
-  margin-top: 1em;
 }
