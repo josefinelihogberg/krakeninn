@@ -27,30 +27,44 @@
     <link rel="stylesheet" href="style.css" />
     <title>Kraken inn, the greatest resturant</title>
   </head>
+
   <body>
-    <div id="google_translate_element" style="display:none"></div>
+    <div id="google_translate_element" style="display: none"></div>
     <img class="main-background" src="assets/background.jpg" alt="background" />
 
-  <!-- translate -->
+    <!-- translate -->
 
-  <div class="lang-btn">
-    <button class="lang" translate="no" value="sv" id="lang-sv" data-lang-sv onclick="ChangeSwe()"><img class="flag"
-        src="assets/swedish.png" alt=""></button>
-    <button class="lang" id="lang-en" value="en" translate="no" data-lang-en onclick="changeEng()"><img class="flag"
-        src="assets/english.png" alt=""></button>
-  </div>
+    <div class="lang-btn">
+      <button
+        class="lang"
+        translate="no"
+        value="sv"
+        id="lang-sv"
+        data-lang-sv
+        onclick="ChangeSwe()">
+        <img class="flag" src="assets/swedish.png" alt="" />
+      </button>
+      <button
+        class="lang"
+        id="lang-en"
+        value="en"
+        translate="no"
+        data-lang-en
+        onclick="changeEng()">
+        <img class="flag" src="assets/english.png" alt="" />
+      </button>
+    </div>
 
-
-
-  <header class="header-container">
-
+    <header class="header-container">
       <img
         class="header-pic"
         src="assets/headerpicture (2).png"
         alt="Goldcoin"
       />
       <div class="header-container">
-        <h1 class="main-header-text main-header-left" translate="no">The Kraken</h1>
+        <h1 class="main-header-text main-header-left" translate="no">
+          The Kraken
+        </h1>
         <h1 class="main-header-text main-header-right" translate="no">Inn</h1>
       </div>
     </header>
@@ -68,11 +82,7 @@
         ><span class="cart-total">0</span></i
       >
     </div>
-    <main>
-      <button class="add-cart">Add to cart</button>
-      <button class="add-cart">Add to cart</button>
-      <button class="add-cart">Add to cart</button>
-    </main>
+    <main></main>
 
     <!--Cart -->
     <div class="cart">
@@ -80,24 +90,14 @@
       <!--Cart Content -->
       <div class="cart-content">
         <div class="cart-box">
-          <img
-            class="cart-img"
-            src="https://goldbelly.imgix.net/uploads/showcase_media_asset/image/110906/bo-ssam-dinner-for-4.c4a32e8801e2f0283e0565bbe8493149.jpg?ixlib=react-9.0.2&auto=format&ar=1%3A1"
-            alt="" />
           <div class="detail-box">
-            <p class="title">Momofuku</p>
-            <p class="product-price">169</p>
-            <i class="fa fa-remove"></i>
-            <input class="cart-quantity" type="number" value="1" />
-          </div>
-          <button class="cart-remove">remove</button>
         </div>
       </div>
       <!-- Total -->
       <div class="table-selector"></div>
     <div class="total">
-        <div class="total-title">Total:</div>
-        <div class="total-price">169</div>
+        <p class="total-title">Total:</p>
+        <p class="total-price"></p>
       </div>
       <!-- Buy Button -->
       <button class="pay-btn">Pay Now</button>

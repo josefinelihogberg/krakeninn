@@ -13,8 +13,10 @@ body{
 }
 
 
-
-
+.total-price{
+  border: 2px solid black;
+  width: 6em;
+}
 .main-background{
     position: absolute;
     z-index: -10;
@@ -224,7 +226,7 @@ main{
   position: fixed;
   display: none;
   width: 300px;
-  height: 25em;
+  height: 35em;
   padding: 20px;
   box-shadow: 1px 1px 3px rgb(175, 149, 0);
   margin-top: -5em;
