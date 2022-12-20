@@ -23,6 +23,18 @@ let totalPrice = document.querySelector(".total-price");
 let total = 0;
 let shoppingCounter = [];
 let shoppingCart = [];
+let payBtns = document.querySelectorAll(".pay-btn");
+// Add listener to pay button
+function addPayBtnListner(){
+  for(i = 0; i < payBtns.length; i++) {
+  payBtns[i].addEventListener('click', PayBtnClicked);
+  }
+}
+function PayBtnClicked(){
+ alert("Your order has been placed!");
+}
+
+
 // Open Cart
 cartIcon.addEventListener('click', function() {
   cart.classList.add("active");
@@ -312,3 +324,4 @@ function changeEng(e) {
 
 //starts when opening site
 openHighlightsMenu();
+addPayBtnListner();

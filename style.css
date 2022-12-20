@@ -3,33 +3,32 @@ body,
 html {
   font-family: "Pirata One", cursive;
   top: 0px !important;
-    overflow: hidden;
+  overflow: hidden;
 }
-*{
-    font-family: 'Pirata One', cursive;
+* {
+  font-family: "Pirata One", cursive;
 }
-body{
-    height: 100vh;
+body {
+  height: 100vh;
 }
 
-
-.total-price{
+.total-price {
   border: 2px solid black;
   width: 6em;
 }
-.main-background{
-    position: absolute;
-    z-index: -10;
+.main-background {
+  position: absolute;
+  z-index: -10;
 }
-.main-header-text{
-    font-size:2.1em;
-    color: rgb(175, 149, 0);
+.main-header-text {
+  font-size: 2.1em;
+  color: rgb(175, 149, 0);
 }
-.header-container{
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    height: 7.5em;
+.header-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  height: 7.5em;
 }
 .main-header-left {
   margin: auto 0 0.5em 0.2em;
@@ -41,13 +40,13 @@ body{
   flex-direction: row-reverse;
   margin: auto 0.2em 0.5em 0;
 }
-.header-pic{
-    width: 100%;
-    height: 7.5em;
-    object-fit: cover;
-    position: absolute;
-    z-index: -3;
-    box-shadow: 0 0 10px black;
+.header-pic {
+  width: 100%;
+  height: 7.5em;
+  object-fit: cover;
+  position: absolute;
+  z-index: -3;
+  box-shadow: 0 0 10px black;
 }
 .main-nav {
   display: flex;
@@ -73,18 +72,18 @@ body{
   padding: 0.2em 0.2em 0.2em 0.2em;
   color: rgb(121, 1, 1);
 }
-.main-nav button:active{
-    box-shadow: 0 0 6px rgb(121, 1, 1);
+.main-nav button:active {
+  box-shadow: 0 0 6px rgb(121, 1, 1);
 }
-main{
-    overflow: scroll;
-    height: 95%;
+main {
+  overflow: scroll;
+  height: 95%;
 }
 
-.search-item{
-    padding: .5em;
-    width: 15em;
-    text-align: center;
+.search-item {
+  padding: 0.5em;
+  width: 15em;
+  text-align: center;
 }
 
 .search-container {
@@ -150,40 +149,54 @@ main{
   padding: 0.2em 0.2em 0.2em 0.2em;
   color: rgb(121, 1, 1);
 }
-.menu-container{
-    height: 100%;
-    overflow: scroll;
-    margin-top: .5em;
-    align-items: center;
+.menu-container {
+  height: 100%;
+  overflow: scroll;
+  margin-top: 0.5em;
+  align-items: center;
 }
-.menu-container main{
-    display: flex;
-    flex-wrap: wrap;
-    height: 100vh;
+.menu-container main {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100vh;
 }
-.foodCategories, .sweetsCategories{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    height: 30em;
-    overflow:scroll;
+.foodCategories,
+.sweetsCategories {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 30em;
+  overflow: scroll;
 }
-.foodCategories button, .sweetsCategories button{
-    height: 10%;
-    width: 50%;
+.foodCategories button,
+.sweetsCategories button {
+  height: 10%;
+  width: 50%;
 }
 
-.card{
-    display: flex;
-    margin: 2em auto 2em auto;
-    display: block;
-    padding: .5em;
-    width: 42%;
-    min-height: 50%;
-    word-wrap:normal;
-    border: 3px solid black;
-    border-radius: 1em;
+.card {
+  display: flex;
+  margin: 2em auto 2em auto;
+  display: block;
+  padding: 0.5em;
+  width: 42%;
+  min-height: 50%;
+  word-wrap: normal;
+  border: 3px solid black;
+  border-radius: 1em;
+}
+
+.card:hover {
+  display: flex;
+  margin: 2em auto 2em auto;
+  display: block;
+  padding: 0.5em;
+  width: 42%;
+  min-height: 50%;
+  word-wrap: normal;
+  border: 3px solid black;
+  border-radius: 1em;
 }
 .card h2 {
   font-size: 2.5em;
@@ -200,33 +213,33 @@ main{
   width: 100%;
   border-radius: 1em;
 }
-.buttonStyle{
-    background-color: transparent;
-    border: 2px solid black;
-    border-radius: .3em;
-    font-size: 1.8em;
-    box-shadow: 0 0 5px black;
-    color: rgb(121, 1, 1);
+.buttonStyle {
+  background-color: transparent;
+  border: 2px solid black;
+  border-radius: 0.3em;
+  font-size: 1.8em;
+  box-shadow: 0 0 5px black;
+  color: rgb(121, 1, 1);
 }
-.card button{
-    min-width: 3em;
-    margin: .3em 0 .3em 0;
+.card button {
+  min-width: 3em;
+  margin: 0.3em 0 0.3em 0;
 }
-.categoryBtn{
-    min-width: 3em;
-    font-size: 1.8em;
-    margin: .3em 0 .3em 0;
+.categoryBtn {
+  min-width: 3em;
+  font-size: 1.8em;
+  margin: 0.3em 0 0.3em 0;
 }
-.categoryBtn:last-child{
-    margin-bottom: 3em;
+.categoryBtn:last-child {
+  margin-bottom: 3em;
 }
 
 /* Cart*/
 .cart {
   position: fixed;
   display: none;
-  width: 300px;
-  height: 35em;
+  width: 60%;
+  height: 45em;
   padding: 20px;
   box-shadow: 1px 1px 3px rgb(175, 149, 0);
   margin-top: -5em;
@@ -236,14 +249,14 @@ main{
 .cart.active {
   display: block;
   right: 0;
-  top: 36%;
+  top: 0;
 }
 
 .close-cart {
   position: absolute;
-  top: 1em;
-  right: 1rem;
-  font-size: 2rem;
+  top: 2.8em;
+  right: 0.3em;
+  font-size: 2em;
   cursor: pointer;
 }
 
@@ -282,15 +295,15 @@ main{
 }
 
 .cart-box {
-  margin-top: 1em;
   display: flex;
+  margin-top: 0.5em;
   flex-direction: column;
   justify-content: space-between;
-  gap: 0.8em;
+  gap: 0.5em;
   align-items: center;
 }
-.goog-te-banner-frame{
-    display:none !important;
+.goog-te-banner-frame {
+  display: none !important;
 }
 
 .detail-box {
@@ -309,8 +322,8 @@ main{
 }
 /* translate style */
 .goog-te-gadget-icon {
-    display:none;
-  }
+  display: none;
+}
 
 .cart-remove {
   padding: 12px 20px;
@@ -331,7 +344,7 @@ main{
   padding: 0.8em;
 }
 #google_translate_element {
-    text-align: right;
+  text-align: right;
 }
 
 .table-selector form select {
@@ -363,9 +376,9 @@ main{
   margin-left: 0.5em;
   color: rgb(121, 1, 1);
 }
-.lang-btn{
-    position: absolute;
-    margin-top: 0.4em;
+.lang-btn {
+  position: absolute;
+  margin-top: 0.4em;
 }
 
 .pay-btn,
@@ -385,9 +398,9 @@ main{
 .cart-remove:hover {
   background: rgb(121, 1, 1);
 }
-.lang{
-    background: transparent;
-    border: none;
+.lang {
+  background: transparent;
+  border: none;
 }
 .table-selector form input {
   width: 50%;
@@ -405,7 +418,11 @@ main{
   width: 85%;
   background-color: rgb(215, 208, 172);
 }
-.flag{
-    width: 25px;
-    height: 15px;
+.flag {
+  width: 25px;
+  height: 15px;
+}
+
+.table-selector {
+  margin-top: 1em;
 }
