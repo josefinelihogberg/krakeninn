@@ -326,7 +326,7 @@ function createFormMoneyInput(){
   let moneyForm = document.createElement('form');
   let moneyAmountInput = document.createElement('input');
   let moneyAmountSubmitBtn = document.createElement('button');
-  moneyAmountSubmitBtn.innerText = 'add my money';
+  moneyAmountSubmitBtn.innerText = 'My budget';
   moneyAmountInput.setAttribute('type', 'text')
   cart.append(moneyForm);
   moneyForm.append(moneyAmountInput);
