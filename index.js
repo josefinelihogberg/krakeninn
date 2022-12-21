@@ -93,7 +93,6 @@ function generateCartCard(){
   let article = event.target.parentNode;
   let menuName = "";
   let menuPrice = 0;
-  console.log(article.childNodes);
   for (let i = 0; i < article.childNodes.length; i++) {
     if (article.childNodes[i].className == "product-title") {
       menuName = article.childNodes[i].innerText;
