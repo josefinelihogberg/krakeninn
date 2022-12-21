@@ -8,63 +8,136 @@ foodCategory.addEventListener("click", openFoodMenu);
 drinksCategory.addEventListener("click", openDrinksMenu);
 bestFoodCategory.addEventListener("click", openHighlightsMenu);
 sweetsCategory.addEventListener("click", openSweetsMenu);
+let CategoryHeader = document.createElement("h2");
 
 // Cart
-let cartIcon = document.querySelector(".cart-icon");
+let cartBox = document.querySelector(".cart-box");
+let addToCartBtnArray = document.querySelectorAll(".add-cart");
+let cartIcon = document.querySelector(".fa-file-text-o");
 let cart = document.querySelector(".cart");
 let closeCart = document.querySelector(".close-cart");
-let products = document.querySelectorAll(".add-cart");
 let cartRemove = document.querySelector(".cart-remove");
-let productPrice = document.querySelector(".product-price").textContent;
-console.log(productPrice);
 let cartQuantity = document.querySelector(".cart-quantity");
-let quantity = cartQuantity.value
-console.log(cartQuantity);
-let totalPrice = document.querySelector(".total-price").textContent;
-console.log(totalPrice);
+let payBtns = document.querySelectorAll(".pay-btn");
+// let quantity = cartQuantity.value
+let quantity = 0;
+let totalPrice = document.querySelector(".total-price");
 let total = 0;
+let shoppingCounter = [];
 let shoppingCart = [];
 // Open Cart
-cartIcon.addEventListener('click', function() {
+cartIcon.addEventListener("click", function () {
   cart.classList.add("active");
   main.style.opacity = "0.5";
   main.style.transition = "800ms";
 });
 
 // Close Cart
-closeCart.addEventListener('click', function() {
+closeCart.addEventListener("click", function () {
   cart.classList.remove("active");
+  main.style.opacity = "1";
 });
 
 // Update the number of items in the cart
-function updateCart() {
-  for(let i = 0; i < products.length; i++) {
-      products[i].addEventListener('click', function(event) {
-          let product = event.target;
-          let cartTotal = document.querySelector('.cart-total');
-          shoppingCart.push(product);
-          cartTotal.textContent = shoppingCart.length; 
-      });
+function addToCartListener() {
+  let addToCartBtnArray = document.querySelectorAll(".add-cart");
+  for (let i = 0; i < addToCartBtnArray.length; i++) {
+    addToCartBtnArray[i].addEventListener("click", confirmChoice);
   }
 }
-updateCart();
-
-// Add event listener to the remove button in the cart
-function handelCartRemove () {
-  let cartBox = document.querySelector(".cart-box");
-  cartBox.style.display ="none";
-  totalNumber = 0;
+function addToCart() {
+  let cartTotal = document.querySelector(".cart-total");
+  let product = event.target;
+  shoppingCounter.push(product);
+  cartTotal.textContent = shoppingCounter.length;
+  generateCartCard();
 }
 
-cartRemove.addEventListener('click', handelCartRemove);
+//Alert to confirm choice
+function confirmChoice() {
+let confirmChoice;
+if (confirm("Are you sure you want to order this?") == true) {
+  confirmChoice = addToCart();
+} else {
+  confirmChoice = "You cancelled!";
+}
+}
+
+//creates an object from the item added to cart.
+function addToCartObject(name, price) {
+  header = name;
+  price = price;
+  return [header, price];
+}
+//function to calculate total price in cart.
+function cartSum(price) {
+  totalPrice.textContent = +totalPrice.textContent + +price;
+}
+//generates the HTML for every card in cart.
+function generateCart(menuName, price) {
+  let newArticle = document.createElement("article");
+  let cardContent = `
+  <div class="cart-box image.png">
+  <div class="detail-box">
+    <p class="title">${menuName}</p>
+    <p class="product-price">${price}</p>
+    <i class="fa fa-remove"></i>
+    <input class="cart-quantity" type="number" value="1"/>
+  </div>
+</div>`;
+  newArticle.innerHTML = cardContent;
+  cartBox.append(newArticle);
+}
+//updates the remaining value in wallet.
+function updateSpendMoneyDisplay(productPrice) {
+  let wallet = document.querySelector('.wallet');
+  if (wallet.innerText < parseInt(productPrice, 10)){
+    alert("You dont have enough funds to buy this item");
+  }else{
+    wallet.innerText = wallet.innerText - parseInt(productPrice, 10);
+    cartSum(productPrice);
+  }
+}
+
+function generateCartCard(){
+  let article = event.target.parentNode;
+  let menuName = "";
+  let menuPrice = 0;
+  console.log(article.childNodes);
+  for (let i = 0; i < article.childNodes.length; i++) {
+    if (article.childNodes[i].className == "product-title") {
+      menuName = article.childNodes[i].innerText;
+    }
+    if (article.childNodes[i].className == "price") {
+      menuPrice = article.childNodes[i].innerText;
+    }
+  }
+  shoppingCart.push(addToCartObject(menuName, menuPrice));
+  console.log(shoppingCart);
+  generateCart(menuName, menuPrice);
+  updateSpendMoneyDisplay(menuPrice);
+}
+// Add event listener to the remove button in the cart
+function handelCartRemove() {
+  cartBox.style.display = "none";
+}
+// Add listener to pay button
+function addPayBtnListner(){
+  for(i = 0; i < payBtns.length; i++) {
+  payBtns[i].addEventListener('click', PayBtnClicked);
+  }
+}
+function PayBtnClicked(){
+  shoppingCart.length = 0;
+ alert("Your order has been placed!");
+}
+// cartRemove.addEventListener('click', handelCartRemove);
 
 // Add event listener to the change of product quantity, working on...
-cartQuantity.addEventListener('change', function(event){
-  total = total + productPrice * cartQuantity;
-  console.log(total);
-});
-
-
+// cartQuantity.addEventListener('change', function(event){
+//   let productPrice = document.querySelector(".product-price").textContent;
+//   total = total + productPrice * cartQuantity;
+// });
 // Choose which table you're sitting at
 
 //Creates the pop-up to set table number.
@@ -77,39 +150,41 @@ function createTableSelector() {
     </div>
   `;
 }
-
-createTableSelector();
-
 //Function to save the users table number.
 function tableNumber() {
   let userNumber = document.getElementById("tables").value;
-
-  console.log(userNumber);
-
   clearTableSelection();
 }
-
 //Function to remove pop-up for table selection.
-function clearTableSelection(){
+function clearTableSelection() {
   tableSelector.remove();
 }
-
+function headerCategories(category){
+  let categoryContainer = document.querySelector(".categoryContainer");
+  let foodCategory = document.querySelector(".food-category")
+  CategoryHeader.className = "categoryHeader"
+  CategoryHeader.innerText = category;
+  categoryContainer.append(CategoryHeader);
+}
+//generates the listmenu to choosen category
 function generateFoodList(category) {
+  headerCategories(category);
   for (let i = 0; i < db[category].length; i++) {
     let newArticle = document.createElement("article");
-    let foodContent = 
-    `<h2 class="product-title" translate="no">${db[category][i].name}</h2>
+    let foodContent = `<h2 class="product-title" translate="no">${db[category][i].name}</h2>
     <figure>
     <img class="product-img" src="${db[category][i].img}"/>
     </figure>
-    <p translate="no">${db[category][i].dsc}</p>
-    <p class="price" translate="no">${db[category][i].price} sek</p>
+    <p>${db[category][i].dsc}</p>
+    <p class="price" translate="no">${db[category][i].price}</p>
     <button class="add-cart buttonStyle">Add to cart</button>`;
     newArticle.className = "card";
     newArticle.innerHTML = foodContent;
     main.append(newArticle);
   }
+  addToCartListener();
 }
+//creates the HTML for category choices when you press "food".
 function foodCategories() {
   let newDiv = document.createElement("div");
   let categories = `
@@ -126,6 +201,7 @@ function foodCategories() {
   newDiv.className = "foodCategories";
   main.append(newDiv);
 }
+//creates the HTML for category choices when you press "sweets".
 function sweetsCategories() {
   let newDiv = document.createElement("div");
   let categories = `
@@ -136,6 +212,7 @@ function sweetsCategories() {
   newDiv.className = "sweetsCategories";
   main.append(newDiv);
 }
+// clears the list of foods.
 function clearMenu() {
   main.innerHTML = "";
 }
@@ -149,6 +226,7 @@ function openHighlightsMenu() {
 }
 function openSweetsMenu() {
   clearMenu();
+  CategoryHeader.innerText ="";
   sweetsCategories();
   let desserts = document.querySelector("main .desserts");
   desserts.addEventListener("click", openDesserts);
@@ -171,6 +249,7 @@ function openIcecream() {
 }
 function openFoodMenu() {
   clearMenu();
+  CategoryHeader.innerText ="";
   foodCategories();
   let bbqs = document.querySelector("main .bbqs");
   bbqs.addEventListener("click", openBbqs);
@@ -194,8 +273,8 @@ function openFoodMenu() {
 function openBbqs() {
   clearMenu();
   generateFoodList("bbqs");
- }
- function opensteaks (){
+}
+function opensteaks() {
   clearMenu();
   generateFoodList("steaks");
 }
@@ -228,24 +307,26 @@ function openbreads() {
   generateFoodList("breads");
 }
 
-
 // translate
 
 function googleTranslateElementInit() {
-  new google.translate.TranslateElement({pageLanguage: "en"}, 'google_translate_element');
+  new google.translate.TranslateElement(
+    { pageLanguage: "en" },
+    "google_translate_element"
+  );
 }
 
 function ChangeSwe(e) {
   var lang = document.getElementById("lang-sv").value;
   var selectField = document.querySelector("#google_translate_element select");
-  for(var i=0; i < selectField.children.length; i++){
+  for (var i = 0; i < selectField.children.length; i++) {
     var option = selectField.children[i];
-    // find desired langauge and change the former language of the hidden selection-field 
-    if(option.value==lang){
-       selectField.selectedIndex = i;
-       // trigger change event afterwards to make google-lib translate this side
-       selectField.dispatchEvent(new Event('change'));
-       break;
+    // find desired langauge and change the former language of the hidden selection-field
+    if (option.value == lang) {
+      selectField.selectedIndex = i;
+      // trigger change event afterwards to make google-lib translate this side
+      selectField.dispatchEvent(new Event("change"));
+      break;
     }
   }
 }
@@ -253,18 +334,53 @@ function ChangeSwe(e) {
 function changeEng(e) {
   var lang = document.getElementById("lang-en").value;
   var selectField = document.querySelector("#google_translate_element select");
-  for(var i=0; i < selectField.children.length; i++){
+  for (var i = 0; i < selectField.children.length; i++) {
     var option = selectField.children[i];
-    // find desired langauge and change the former language of the hidden selection-field 
-    if(option.value==lang){
-       selectField.selectedIndex = i;
-       // trigger change event afterwards to make google-lib translate this side
-       selectField.dispatchEvent(new Event('change'));
-       break;
+    // find desired langauge and change the former language of the hidden selection-field
+    if (option.value == lang) {
+      selectField.selectedIndex = i;
+      // trigger change event afterwards to make google-lib translate this side
+      selectField.dispatchEvent(new Event("change"));
+      break;
     }
   }
 }
-
-
+// this function creates an input where the costumer can put in an amount
+// of money that he/she wants to spend during the night. This amount will
+// be appended to a p tag somewhere on the page.
+function createFormMoneyInput() {
+  let moneyForm = document.createElement("form");
+  let moneyAmountInput = document.createElement("input");
+  let moneyAmountSubmitBtn = document.createElement("button");
+  moneyAmountSubmitBtn.innerText = "add my money";
+  moneyAmountInput.setAttribute("type", "text");
+  cart.append(moneyForm);
+  moneyForm.append(moneyAmountInput);
+  moneyForm.append(moneyAmountSubmitBtn);
+  moneyForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    let amountH2 = document.createElement("h2");
+    amountH2.innerText = "you have this much left to spend:";
+    let moneyAmountP = document.createElement("p");
+    moneyAmountP.classList.add("moneyP");
+    let cartBox = document.querySelector(".cart-box");
+    cartBox.append(amountH2);
+    cartBox.append(moneyAmountP);
+    moneyAmountP.innerText = `${moneyAmountInput.value}`;
+  });
+}
+//updates the remaining value in wallet.
+function updateSpendMoneyDisplay(productPrice) {
+  let moneyP = document.querySelector(".moneyP");
+  if (moneyP.innerText < parseInt(productPrice, 10)) {
+    alert("You dont have enough funds to buy this item");
+  } else {
+    moneyP.innerText = moneyP.innerText - parseInt(productPrice, 10);
+    cartSum(productPrice);
+  }
+}
 //starts when opening site
 openHighlightsMenu();
+createFormMoneyInput();
+addPayBtnListner();
+createTableSelector();
