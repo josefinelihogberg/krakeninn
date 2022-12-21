@@ -57,7 +57,7 @@ function addToCart() {
 function confirmChoice() {
 let confirmChoice;
 if (confirm("Are you sure you want to order this?") == true) {
-  confirmChoice = addToCart();
+  addToCart();
 } else {
   confirmChoice = "You cancelled!";
 }
@@ -81,7 +81,6 @@ function generateCart(menuName, price) {
   <div class="detail-box">
     <p class="title">${menuName}</p>
     <p class="product-price">${price}</p>
-    <i class="fa fa-remove"></i>
     <input class="cart-quantity" type="number" value="1"/>
   </div>
 </div>`;
@@ -103,7 +102,6 @@ function generateCartCard(){
     }
   }
   shoppingCart.push(addToCartObject(menuName, menuPrice));
-  console.log(shoppingCart);
   generateCart(menuName, menuPrice);
   updateSpendMoneyDisplay(menuPrice);
 }
@@ -339,6 +337,7 @@ function changeEng(e) {
 // be appended to a p tag somewhere on the page.
 function createFormMoneyInput() {
   let moneyForm = document.createElement("form");
+  moneyForm.className = "moneyForm"
   let moneyAmountInput = document.createElement("input");
   let moneyAmountSubmitBtn = document.createElement("button");
   moneyAmountSubmitBtn.innerText = "add my money";
@@ -349,7 +348,6 @@ function createFormMoneyInput() {
   moneyForm.addEventListener("submit", function (event) {
     event.preventDefault();
     moneyForm.remove();
-    moneyAmountSubmitBtn.remove();
     let amountH2 = document.createElement("h2");
     amountH2.innerText = "you have this much left to spend:";
     let moneyAmountP = document.createElement("p");
@@ -363,9 +361,12 @@ function createFormMoneyInput() {
 //updates the remaining value in wallet.
 function updateSpendMoneyDisplay(productPrice) {
   let moneyP = document.querySelector(".moneyP");
+  let moneyForm = document.querySelector('.moneyForm');
   if (moneyP == null){
-
-    cartSum(productPrice)
+    if (moneyForm !== null){
+      moneyForm.remove();
+    }
+    cartSum(productPrice);
   }else{
     if (moneyP.innerText < parseInt(productPrice, 10)) {
       alert("You dont have enough funds to buy this item");
