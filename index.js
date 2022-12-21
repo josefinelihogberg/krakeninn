@@ -4,11 +4,11 @@ let drinksCategory = document.querySelector("nav .drinks-category");
 let bestFoodCategory = document.querySelector("nav .home");
 let sweetsCategory = document.querySelector("nav .sweets-category");
 let tableSelector = document.querySelector(".table-selector");
+let CategoryHeader = document.createElement("h2");
 foodCategory.addEventListener("click", openFoodMenu);
 drinksCategory.addEventListener("click", openDrinksMenu);
 bestFoodCategory.addEventListener("click", openHighlightsMenu);
 sweetsCategory.addEventListener("click", openSweetsMenu);
-let CategoryHeader = document.createElement("h2");
 
 // Cart
 let cartBox = document.querySelector(".cart-box");
@@ -88,16 +88,6 @@ function generateCart(menuName, price) {
   newArticle.innerHTML = cardContent;
   cartBox.append(newArticle);
 }
-//updates the remaining value in wallet.
-function updateSpendMoneyDisplay(productPrice) {
-  let wallet = document.querySelector('.wallet');
-  if (wallet.innerText < parseInt(productPrice, 10)){
-    alert("You dont have enough funds to buy this item");
-  }else{
-    wallet.innerText = wallet.innerText - parseInt(productPrice, 10);
-    cartSum(productPrice);
-  }
-}
 
 function generateCartCard(){
   let article = event.target.parentNode;
@@ -161,7 +151,6 @@ function clearTableSelection() {
 }
 function headerCategories(category){
   let categoryContainer = document.querySelector(".categoryContainer");
-  let foodCategory = document.querySelector(".food-category")
   CategoryHeader.className = "categoryHeader"
   CategoryHeader.innerText = category;
   categoryContainer.append(CategoryHeader);
@@ -359,6 +348,8 @@ function createFormMoneyInput() {
   moneyForm.append(moneyAmountSubmitBtn);
   moneyForm.addEventListener("submit", function (event) {
     event.preventDefault();
+    moneyForm.remove();
+    moneyAmountSubmitBtn.remove();
     let amountH2 = document.createElement("h2");
     amountH2.innerText = "you have this much left to spend:";
     let moneyAmountP = document.createElement("p");
@@ -372,11 +363,16 @@ function createFormMoneyInput() {
 //updates the remaining value in wallet.
 function updateSpendMoneyDisplay(productPrice) {
   let moneyP = document.querySelector(".moneyP");
-  if (moneyP.innerText < parseInt(productPrice, 10)) {
-    alert("You dont have enough funds to buy this item");
-  } else {
-    moneyP.innerText = moneyP.innerText - parseInt(productPrice, 10);
-    cartSum(productPrice);
+  if (moneyP == null){
+
+    cartSum(productPrice)
+  }else{
+    if (moneyP.innerText < parseInt(productPrice, 10)) {
+      alert("You dont have enough funds to buy this item");
+    } else {
+      moneyP.innerText = moneyP.innerText - parseInt(productPrice, 10);
+      cartSum(productPrice);
+    }
   }
 }
 //starts when opening site
