@@ -169,7 +169,6 @@ function clearTableSelection(){
 };
 function headerCategories(category){
   let categoryContainer = document.querySelector(".categoryContainer");
-  let foodCategory = document.querySelector(".food-category")
   CategoryHeader.className = "categoryHeader"
   CategoryHeader.innerText = category;
   categoryContainer.append(CategoryHeader);
