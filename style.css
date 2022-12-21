@@ -149,16 +149,22 @@ main{
     margin: 2em auto 2em auto;
     padding: .5em;
     width: 40%;
-    min-height: 50%;
+    min-height: 30%;
     word-wrap:normal;
     border: 3px solid black;
     border-radius: 1em;
     box-shadow: 0 0 10px rgb(121, 1, 1);
     background-color: rgba(255, 255, 255, 0.336);
 }
-.card h2 {
+.product-title {
+  position: absolute;
+  width: 90%;
+  text-align: center;
+  border-radius: .2em .2em 0 0;
+  background-color: #d3cdcda6;
   font-size: 2em;
-  min-height: 2em;
+  min-height: 1em;
+  padding: .2em 0 .2em 0;
   margin: 0 0 0.5em 0;
 }
 .card p {
@@ -171,7 +177,8 @@ main{
 .card .price::after{
   content: " Sek";
 }
-.card img {
+.product-img {
+  max-height: 15em;
   width: 100%;
   border-radius: 1em;
   box-shadow: 0 0 7px black;

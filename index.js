@@ -78,13 +78,11 @@ function generateCart(menuName, price) {
   let newArticle = document.createElement("article");
   newArticle.className = "billItemsContainer"
   let cardContent = `
-  <div class="cart-box image.png">
   <div class="detail-box">
     <p class="bill-title">${menuName}</p>
     <p class="bill-price">${price}</p>
     <input class="cart-quantity" type="number" value="1"/>
-  </div>
-</div>`;
+  </div>`;
   newArticle.innerHTML = cardContent;
   cartBox.append(newArticle);
 }
