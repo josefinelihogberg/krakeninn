@@ -107,6 +107,7 @@ main{
 .search-container button {
   width: 10%;
   padding: 0.6em;
+  margin-right: 2em;
   background-color: rgb(121, 1, 1);
   color: white;
   border: 1px solid grey;

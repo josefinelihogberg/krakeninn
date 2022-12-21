@@ -12,7 +12,7 @@ sweetsCategory.addEventListener("click", openSweetsMenu);
 // Cart
 let cartBox = document.querySelector(".cart-box");
 let addToCartBtnArray = document.querySelectorAll(".add-cart");
-let cartIcon = document.querySelector(".cart-icon");
+let cartIcon = document.querySelector(".fa-file-text-o");
 let cart = document.querySelector(".cart");
 let closeCart = document.querySelector(".close-cart");
 let cartRemove = document.querySelector(".cart-remove");
