@@ -41,6 +41,12 @@ body{
   flex-direction: row-reverse;
   margin: auto 0.2em 0.5em 0;
 }
+.categoryHeader{
+  display: block;
+  text-align: center;
+  font-size: 3em;
+  margin: .3em;
+}
 .header-pic{
     width: 100%;
     height: 7.5em;
