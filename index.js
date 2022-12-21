@@ -82,7 +82,6 @@ function generateCart(menuName, price) {
     <i class="fa fa-remove"></i>
     <input class="cart-quantity" type="number" value="1"/>
   </div>
-  <button class="cart-remove" translate="no">Remove</button>
 </div>`;
   newArticle.innerHTML = cardContent;
   cartBox.append(newArticle);
