@@ -16,6 +16,7 @@ body{
     z-index: -10;
 }
 .main-header-text{
+  justify-content: center;
     font-size:2.1em;
     color: rgb(175, 149, 0);
 }
@@ -37,6 +38,7 @@ body{
 }
 .categoryHeader{
   display: block;
+  text-transform: capitalize;
   text-align: center;
   font-size: 3em;
   margin: .3em;
@@ -175,6 +177,7 @@ main{
   box-shadow: 0 0 7px black;
 }
 .buttonStyle{
+    text-transform: capitalize;
     background-color: transparent;
     border: 2px solid black;
     border-radius: .3em;
