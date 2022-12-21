@@ -1,14 +1,16 @@
+
 let main = document.querySelector("main");
 let foodCategory = document.querySelector("nav .food-category");
 let drinksCategory = document.querySelector("nav .drinks-category");
 let bestFoodCategory = document.querySelector("nav .home");
 let sweetsCategory = document.querySelector("nav .sweets-category");
 let tableSelector = document.querySelector(".table-selector");
-let CategoryHeader = document.createElement("h2");
 foodCategory.addEventListener("click", openFoodMenu);
 drinksCategory.addEventListener("click", openDrinksMenu);
 bestFoodCategory.addEventListener("click", openHighlightsMenu);
 sweetsCategory.addEventListener("click", openSweetsMenu);
+let CategoryHeader = document.createElement("h2");
+
 // Cart
 let cartBox = document.querySelector(".cart-box");
 let addToCartBtnArray = document.querySelectorAll(".add-cart");
@@ -18,6 +20,7 @@ let closeCart = document.querySelector(".close-cart");
 let cartRemove = document.querySelector(".cart-remove");
 let cartQuantity = document.querySelector(".cart-quantity");
 let payBtns = document.querySelectorAll(".pay-btn");
+// let quantity = cartQuantity.value
 let quantity = 0;
 let totalPrice = document.querySelector(".total-price");
 let total = 0;
@@ -29,11 +32,13 @@ cartIcon.addEventListener('click', function() {
   main.style.opacity = "0.5";
   main.style.transition = "800ms";
 });
+
 // Close Cart
 closeCart.addEventListener('click', function() {
   cart.classList.remove("active");
   main.style.opacity = "1";
 });
+
 // Update the number of items in the cart
 function addToCartListener(){
   let addToCartBtnArray = document.querySelectorAll(".add-cart");
@@ -41,36 +46,23 @@ function addToCartListener(){
     addToCartBtnArray[i].addEventListener('click',addToCart);
   };
 };
-//Sends in information of currentcard to counter in cart and calling "generatecartcard"
 function addToCart(){
   let cartTotal = document.querySelector('.cart-total');
   let product = event.target;
   shoppingCounter.push(product);
   cartTotal.textContent = shoppingCounter.length;
   generateCartCard();
-};
-function generateCartCard(){
-  let article = event.target.parentNode;
-  let menuName ="";
-  let menuPrice = 0;
-  for (let i = 0; i < article.childNodes.length; i++) {
-    if (article.childNodes[i].className == "product-title"){
-      menuName = article.childNodes[i].innerText;
-    };
-    if (article.childNodes[i].className == "price") {
-      menuPrice = article.childNodes[i].innerText;
-    };
-  };
-  shoppingCart.push(addToCartObject(menuName, menuPrice))
-  generateCart(menuName, menuPrice);
-  updateSpendMoneyDisplay(menuPrice);
-};
+}
 //creates an object from the item added to cart.
 function addToCartObject(name, price){
   header = name;
   price = price;
   return [header, price];
-};
+}
+//function to calculate total price in cart.
+function cartSum(price){
+  totalPrice.textContent = (+totalPrice.textContent) + (+price);
+}
 //generates the HTML for every card in cart.
 function generateCart(menuName, price){
   let newArticle = document.createElement("article");
@@ -86,21 +78,7 @@ function generateCart(menuName, price){
 </div>`
 newArticle.innerHTML = cardContent;
 cartBox.append(newArticle);
-};
-//updates the remaining value in wallet.
-function updateSpendMoneyDisplay(productPrice) {
-  let wallet = document.querySelector('.wallet');
-  if (wallet.innerText < parseInt(productPrice, 10)){
-    alert("You dont have enough funds to buy this item");
-  }else{
-    wallet.innerText = wallet.innerText - parseInt(productPrice, 10);
-    cartSum(productPrice);
-  };
-};
-//function to calculate total price in cart.
-function cartSum(price){
-  totalPrice.textContent = (+totalPrice.textContent) + (+price);
-};
+}
 //this function creates an input where the costumer can put in an amount
 //of money that he/she wants to spend during the night. This amount will
 //be appended to a p tag somewhere on the page.
@@ -123,22 +101,54 @@ function createFormMoneyInput(){
    cartBox.append(amountH2);
    cartBox.append(moneyAmountP);
    moneyAmountP.innerText = `${moneyAmountInput.value}`;
-  });
-};
+  })
+}
+function clearFormInput(){
+  moneyForm.remove();
+}
+//updates the remaining value in wallet.
+function updateSpendMoneyDisplay(productPrice) {
+  let wallet = document.querySelector('.wallet');
+  if (wallet.innerText < parseInt(productPrice, 10)){
+    alert("You dont have enough funds to buy this item");
+  }else{
+    wallet.innerText = wallet.innerText - parseInt(productPrice, 10);
+    cartSum(productPrice);
+  }
+}
+
+function generateCartCard(){
+  let article = event.target.parentNode;
+  let menuName ="";
+  let menuPrice = 0;
+  console.log(article.childNodes);
+  for (let i = 0; i < article.childNodes.length; i++) {
+    if (article.childNodes[i].className == "product-title"){
+      menuName = article.childNodes[i].innerText;
+    }
+    if (article.childNodes[i].className == "price") {
+      menuPrice = article.childNodes[i].innerText;
+    }
+  }
+  shoppingCart.push(addToCartObject(menuName, menuPrice))
+  console.log(shoppingCart);
+  generateCart(menuName, menuPrice);
+  updateSpendMoneyDisplay(menuPrice);
+}
 // Add event listener to the remove button in the cart
 function handelCartRemove () {
   cartBox.style.display ="none";
-};
+}
 // Add listener to pay button
 function addPayBtnListner(){
   for(i = 0; i < payBtns.length; i++) {
   payBtns[i].addEventListener('click', PayBtnClicked);
-  };
-};
+  }
+}
 function PayBtnClicked(){
   shoppingCart.length = 0;
  alert("Your order has been placed!");
-};
+}
 // cartRemove.addEventListener('click', handelCartRemove);
 
 // Add event listener to the change of product quantity, working on...
@@ -157,23 +167,23 @@ function createTableSelector() {
       <button onclick="tableNumber()">Submit</button>
     </div>
   `;
-};
+}
 //Function to save the users table number.
 function tableNumber() {
   let userNumber = document.getElementById("tables").value;
   clearTableSelection();
-};
+}
 //Function to remove pop-up for table selection.
 function clearTableSelection(){
   tableSelector.remove();
-};
+}
 function headerCategories(category){
   let categoryContainer = document.querySelector(".categoryContainer");
   let foodCategory = document.querySelector(".food-category")
   CategoryHeader.className = "categoryHeader"
   CategoryHeader.innerText = category;
   categoryContainer.append(CategoryHeader);
-};
+}
 //generates the listmenu to choosen category
 function generateFoodList(category) {
   headerCategories(category);
@@ -190,9 +200,9 @@ function generateFoodList(category) {
     newArticle.className = "card";
     newArticle.innerHTML = foodContent;
     main.append(newArticle);
-  };
+  }
   addToCartListener();
-};
+}
 //creates the HTML for category choices when you press "food".
 function foodCategories() {
   let newDiv = document.createElement('div');
@@ -209,7 +219,7 @@ function foodCategories() {
   newDiv.innerHTML = categories;
   newDiv.className = "foodCategories";
   main.append(newDiv);
-};
+}
 //creates the HTML for category choices when you press "sweets".
 function sweetsCategories() {
   let newDiv = document.createElement("div");
@@ -220,19 +230,19 @@ function sweetsCategories() {
   newDiv.innerHTML = categories;
   newDiv.className = "sweetsCategories";
   main.append(newDiv);
-};
+}
 // clears the list of foods.
 function clearMenu() {
   main.innerHTML = "";
-};
+}
 function openDrinksMenu() {
   clearMenu();
   generateFoodList("drinks");
-};
+}
 function openHighlightsMenu() {
   clearMenu();
   generateFoodList("best-foods");
-};
+}
 function openSweetsMenu() {
   clearMenu();
   CategoryHeader.innerText ="";
@@ -243,19 +253,19 @@ function openSweetsMenu() {
   chocolates.addEventListener("click", openChocolates);
   let icecream = document.querySelector("main .ice-cream");
   icecream.addEventListener("click", openIcecream);
-};
+}
 function openDesserts() {
   clearMenu();
   generateFoodList("desserts");
-};
+}
 function openChocolates() {
   clearMenu();
   generateFoodList("chocolates");
-};
+}
 function openIcecream() {
   clearMenu();
   generateFoodList("ice-cream");
-};
+}
 function openFoodMenu() {
   clearMenu();
   CategoryHeader.innerText ="";
@@ -278,47 +288,51 @@ function openFoodMenu() {
   sandwiches.addEventListener("click", opensandwiches);
   let breads = document.querySelector("main .breads");
   breads.addEventListener("click", openbreads);
-};
+}
 function openBbqs() {
   clearMenu();
   generateFoodList("bbqs");
-};
+}
  function opensteaks (){
   clearMenu();
   generateFoodList("steaks");
-};
+}
 function openporks() {
   clearMenu();
   generateFoodList("porks");
-};
+}
 function openfried() {
   clearMenu();
   generateFoodList("fried-chicken");
-};
+}
 function opensausages() {
   clearMenu();
   generateFoodList("sausages");
-};
+}
 function openpizzas() {
   clearMenu();
   generateFoodList("pizzas");
-};
+}
 function openburgers() {
   clearMenu();
   generateFoodList("burgers");
-};
+}
 function opensandwiches() {
   clearMenu();
   generateFoodList("sandwiches");
-};
+}
 function openbreads() {
   clearMenu();
   generateFoodList("breads");
-};
+}
+
+
 // translate
+
 function googleTranslateElementInit() {
   new google.translate.TranslateElement({pageLanguage: "en"}, 'google_translate_element');
-};
+}
+
 function ChangeSwe(e) {
   var lang = document.getElementById("lang-sv").value;
   var selectField = document.querySelector("#google_translate_element select");
@@ -330,9 +344,10 @@ function ChangeSwe(e) {
        // trigger change event afterwards to make google-lib translate this side
        selectField.dispatchEvent(new Event('change'));
        break;
-    };
-  };
-};
+    }
+  }
+}
+
 function changeEng(e) {
   var lang = document.getElementById("lang-en").value;
   var selectField = document.querySelector("#google_translate_element select");
@@ -344,9 +359,9 @@ function changeEng(e) {
        // trigger change event afterwards to make google-lib translate this side
        selectField.dispatchEvent(new Event('change'));
        break;
-    };
-  };
-};
+    }
+  }
+}
 //starts when opening site
 openHighlightsMenu();
 createFormMoneyInput();
