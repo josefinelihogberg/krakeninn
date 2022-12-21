@@ -19,6 +19,7 @@ let closeCart = document.querySelector(".close-cart");
 let cartRemove = document.querySelector(".cart-remove");
 let cartQuantity = document.querySelector(".cart-quantity");
 let payBtns = document.querySelectorAll(".pay-btn");
+let WalletAmountCheck = true;
 // let quantity = cartQuantity.value
 let quantity = 0;
 let totalPrice = document.querySelector(".total-price");
@@ -50,14 +51,13 @@ function addToCart() {
   let product = event.target;
   shoppingCounter.push(product);
   cartTotal.textContent = shoppingCounter.length;
-  generateCartCard();
 }
 
 //Alert to confirm choice
 function confirmChoice() {
 let confirmChoice;
 if (confirm("Are you sure you want to order this?") == true) {
-  addToCart();
+  generateCartCard();
 } else {
   confirmChoice = "You cancelled!";
 }
@@ -76,11 +76,12 @@ function cartSum(price) {
 //generates the HTML for every card in cart.
 function generateCart(menuName, price) {
   let newArticle = document.createElement("article");
+  newArticle.className = "billItemsContainer"
   let cardContent = `
   <div class="cart-box image.png">
   <div class="detail-box">
-    <p class="title">${menuName}</p>
-    <p class="product-price">${price}</p>
+    <p class="bill-title">${menuName}</p>
+    <p class="bill-price">${price}</p>
     <input class="cart-quantity" type="number" value="1"/>
   </div>
 </div>`;
@@ -102,8 +103,12 @@ function generateCartCard(){
     }
   }
   shoppingCart.push(addToCartObject(menuName, menuPrice));
-  generateCart(menuName, menuPrice);
   updateSpendMoneyDisplay(menuPrice);
+  if (WalletAmountCheck == true){ //checks if boolean is true, if false add to cart is cancelled.
+  addToCart();
+  generateCart(menuName, menuPrice);
+  }
+
 }
 // Add event listener to the remove button in the cart
 function handelCartRemove() {
@@ -336,25 +341,30 @@ function changeEng(e) {
 // of money that he/she wants to spend during the night. This amount will
 // be appended to a p tag somewhere on the page.
 function createFormMoneyInput() {
+  let totalAmountContainer = document.querySelector('.cartFooterContainer');
   let moneyForm = document.createElement("form");
   moneyForm.className = "moneyForm"
   let moneyAmountInput = document.createElement("input");
+  moneyAmountInput.className = "addFundsInput"
   let moneyAmountSubmitBtn = document.createElement("button");
-  moneyAmountSubmitBtn.innerText = "add my money";
+  moneyAmountSubmitBtn.className = "addFundsBtn"
+  moneyAmountSubmitBtn.innerText = "add my limit";
   moneyAmountInput.setAttribute("type", "text");
-  cart.append(moneyForm);
+  totalAmountContainer.append(moneyForm);
   moneyForm.append(moneyAmountInput);
   moneyForm.append(moneyAmountSubmitBtn);
   moneyForm.addEventListener("submit", function (event) {
     event.preventDefault();
-    moneyForm.remove();
+    moneyForm.innerHTML = "";
+    totalAmountContainer.append(moneyForm);
     let amountH2 = document.createElement("h2");
-    amountH2.innerText = "you have this much left to spend:";
+    amountH2.className = "FundsLeftHeader"
+    amountH2.innerText = "Left to spend:";
     let moneyAmountP = document.createElement("p");
     moneyAmountP.classList.add("moneyP");
     let cartBox = document.querySelector(".cart-box");
-    cartBox.append(amountH2);
-    cartBox.append(moneyAmountP);
+    moneyForm.append(amountH2);
+    moneyForm.append(moneyAmountP);
     moneyAmountP.innerText = `${moneyAmountInput.value}`;
   });
 }
@@ -370,6 +380,7 @@ function updateSpendMoneyDisplay(productPrice) {
   }else{
     if (moneyP.innerText < parseInt(productPrice, 10)) {
       alert("You dont have enough funds to buy this item");
+      WalletAmountCheck = false;
     } else {
       moneyP.innerText = moneyP.innerText - parseInt(productPrice, 10);
       cartSum(productPrice);
