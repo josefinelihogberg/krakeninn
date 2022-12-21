@@ -90,11 +90,11 @@ cartBox.append(newArticle);
 //updates the remaining value in wallet.
 function updateSpendMoneyDisplay(productPrice) {
   let wallet = document.querySelector('.wallet');
-  if (wallet.innerText < parseInt(productPrice, 10)){
+  if (wallet.innerText <= parseInt(productPrice, 10)){
     alert("You dont have enough funds to buy this item");
+    console.log("hllooo")
   }else{
     wallet.innerText = wallet.innerText - parseInt(productPrice, 10);
-    cartSum(productPrice);
   };
 };
 //function to calculate total price in cart.
