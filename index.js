@@ -1,4 +1,3 @@
-
 let main = document.querySelector("main");
 let foodCategory = document.querySelector("nav .food-category");
 let drinksCategory = document.querySelector("nav .drinks-category");
@@ -14,7 +13,7 @@ let CategoryHeader = document.createElement("h2");
 // Cart
 let cartBox = document.querySelector(".cart-box");
 let addToCartBtnArray = document.querySelectorAll(".add-cart");
-let cartIcon = document.querySelector(".cart-icon");
+let cartIcon = document.querySelector(".fa-file-text-o");
 let cart = document.querySelector(".cart");
 let closeCart = document.querySelector(".close-cart");
 let cartRemove = document.querySelector(".cart-remove");
@@ -27,46 +26,57 @@ let total = 0;
 let shoppingCounter = [];
 let shoppingCart = [];
 // Open Cart
-cartIcon.addEventListener('click', function() {
+cartIcon.addEventListener("click", function () {
   cart.classList.add("active");
   main.style.opacity = "0.5";
   main.style.transition = "800ms";
 });
 
 // Close Cart
-closeCart.addEventListener('click', function() {
+closeCart.addEventListener("click", function () {
   cart.classList.remove("active");
   main.style.opacity = "1";
 });
 
 // Update the number of items in the cart
-function addToCartListener(){
+function addToCartListener() {
   let addToCartBtnArray = document.querySelectorAll(".add-cart");
   for (let i = 0; i < addToCartBtnArray.length; i++) {
-    addToCartBtnArray[i].addEventListener('click',addToCart);
-  };
-};
-function addToCart(){
-  let cartTotal = document.querySelector('.cart-total');
+    addToCartBtnArray[i].addEventListener("click", confirmChoice);
+  }
+}
+function addToCart() {
+  let cartTotal = document.querySelector(".cart-total");
   let product = event.target;
   shoppingCounter.push(product);
   cartTotal.textContent = shoppingCounter.length;
   generateCartCard();
 }
+
+//Alert to confirm choice
+function confirmChoice() {
+let confirmChoice;
+if (confirm("Are you sure you want to order this?") == true) {
+  confirmChoice = addToCart();
+} else {
+  confirmChoice = "You cancelled!";
+}
+}
+
 //creates an object from the item added to cart.
-function addToCartObject(name, price){
+function addToCartObject(name, price) {
   header = name;
   price = price;
   return [header, price];
 }
 //function to calculate total price in cart.
-function cartSum(price){
-  totalPrice.textContent = (+totalPrice.textContent) + (+price);
+function cartSum(price) {
+  totalPrice.textContent = +totalPrice.textContent + +price;
 }
 //generates the HTML for every card in cart.
-function generateCart(menuName, price){
+function generateCart(menuName, price) {
   let newArticle = document.createElement("article");
-  let cardContent =`
+  let cardContent = `
   <div class="cart-box image.png">
   <div class="detail-box">
     <p class="title">${menuName}</p>
@@ -74,37 +84,9 @@ function generateCart(menuName, price){
     <i class="fa fa-remove"></i>
     <input class="cart-quantity" type="number" value="1"/>
   </div>
-  <button class="cart-remove" translate="no">Remove</button>
-</div>`
-newArticle.innerHTML = cardContent;
-cartBox.append(newArticle);
-}
-//this function creates an input where the costumer can put in an amount
-//of money that he/she wants to spend during the night. This amount will
-//be appended to a p tag somewhere on the page.
-function createFormMoneyInput(){
-  let moneyForm = document.createElement('form');
-  let moneyAmountInput = document.createElement('input');
-  let moneyAmountSubmitBtn = document.createElement('button');
-  moneyAmountSubmitBtn.innerText = 'add my money';
-  moneyAmountInput.setAttribute('type', 'text');
-  cart.append(moneyForm);
-  moneyForm.append(moneyAmountInput);
-  moneyForm.append(moneyAmountSubmitBtn);
-  moneyForm.addEventListener('submit', function(event){
-    event.preventDefault();
-    let amountH2 = document.createElement('h2');
-    amountH2.innerText = 'you have this much left to spend:';
-    let moneyAmountP = document.createElement('p');
-    moneyAmountP.classList.add("wallet");
-    let cartBox = document.querySelector(".cart-box");
-   cartBox.append(amountH2);
-   cartBox.append(moneyAmountP);
-   moneyAmountP.innerText = `${moneyAmountInput.value}`;
-  })
-}
-function clearFormInput(){
-  moneyForm.remove();
+</div>`;
+  newArticle.innerHTML = cardContent;
+  cartBox.append(newArticle);
 }
 //updates the remaining value in wallet.
 function updateSpendMoneyDisplay(productPrice) {
@@ -119,25 +101,25 @@ function updateSpendMoneyDisplay(productPrice) {
 
 function generateCartCard(){
   let article = event.target.parentNode;
-  let menuName ="";
+  let menuName = "";
   let menuPrice = 0;
   console.log(article.childNodes);
   for (let i = 0; i < article.childNodes.length; i++) {
-    if (article.childNodes[i].className == "product-title"){
+    if (article.childNodes[i].className == "product-title") {
       menuName = article.childNodes[i].innerText;
     }
     if (article.childNodes[i].className == "price") {
       menuPrice = article.childNodes[i].innerText;
     }
   }
-  shoppingCart.push(addToCartObject(menuName, menuPrice))
+  shoppingCart.push(addToCartObject(menuName, menuPrice));
   console.log(shoppingCart);
   generateCart(menuName, menuPrice);
   updateSpendMoneyDisplay(menuPrice);
 }
 // Add event listener to the remove button in the cart
-function handelCartRemove () {
-  cartBox.style.display ="none";
+function handelCartRemove() {
+  cartBox.style.display = "none";
 }
 // Add listener to pay button
 function addPayBtnListner(){
@@ -174,7 +156,7 @@ function tableNumber() {
   clearTableSelection();
 }
 //Function to remove pop-up for table selection.
-function clearTableSelection(){
+function clearTableSelection() {
   tableSelector.remove();
 }
 function headerCategories(category){
@@ -189,8 +171,7 @@ function generateFoodList(category) {
   headerCategories(category);
   for (let i = 0; i < db[category].length; i++) {
     let newArticle = document.createElement("article");
-    let foodContent = 
-    `<h2 class="product-title" translate="no">${db[category][i].name}</h2>
+    let foodContent = `<h2 class="product-title" translate="no">${db[category][i].name}</h2>
     <figure>
     <img class="product-img" src="${db[category][i].img}"/>
     </figure>
@@ -205,7 +186,7 @@ function generateFoodList(category) {
 }
 //creates the HTML for category choices when you press "food".
 function foodCategories() {
-  let newDiv = document.createElement('div');
+  let newDiv = document.createElement("div");
   let categories = `
   <button class = "bbqs categoryBtn buttonStyle">bbqs</button>
   <button class = "steaks categoryBtn buttonStyle">steaks</button>
@@ -293,7 +274,7 @@ function openBbqs() {
   clearMenu();
   generateFoodList("bbqs");
 }
- function opensteaks (){
+function opensteaks() {
   clearMenu();
   generateFoodList("steaks");
 }
@@ -326,24 +307,26 @@ function openbreads() {
   generateFoodList("breads");
 }
 
-
 // translate
 
 function googleTranslateElementInit() {
-  new google.translate.TranslateElement({pageLanguage: "en"}, 'google_translate_element');
+  new google.translate.TranslateElement(
+    { pageLanguage: "en" },
+    "google_translate_element"
+  );
 }
 
 function ChangeSwe(e) {
   var lang = document.getElementById("lang-sv").value;
   var selectField = document.querySelector("#google_translate_element select");
-  for(var i=0; i < selectField.children.length; i++){
+  for (var i = 0; i < selectField.children.length; i++) {
     var option = selectField.children[i];
-    // find desired langauge and change the former language of the hidden selection-field 
-    if(option.value==lang){
-       selectField.selectedIndex = i;
-       // trigger change event afterwards to make google-lib translate this side
-       selectField.dispatchEvent(new Event('change'));
-       break;
+    // find desired langauge and change the former language of the hidden selection-field
+    if (option.value == lang) {
+      selectField.selectedIndex = i;
+      // trigger change event afterwards to make google-lib translate this side
+      selectField.dispatchEvent(new Event("change"));
+      break;
     }
   }
 }
@@ -351,15 +334,49 @@ function ChangeSwe(e) {
 function changeEng(e) {
   var lang = document.getElementById("lang-en").value;
   var selectField = document.querySelector("#google_translate_element select");
-  for(var i=0; i < selectField.children.length; i++){
+  for (var i = 0; i < selectField.children.length; i++) {
     var option = selectField.children[i];
-    // find desired langauge and change the former language of the hidden selection-field 
-    if(option.value==lang){
-       selectField.selectedIndex = i;
-       // trigger change event afterwards to make google-lib translate this side
-       selectField.dispatchEvent(new Event('change'));
-       break;
+    // find desired langauge and change the former language of the hidden selection-field
+    if (option.value == lang) {
+      selectField.selectedIndex = i;
+      // trigger change event afterwards to make google-lib translate this side
+      selectField.dispatchEvent(new Event("change"));
+      break;
     }
+  }
+}
+// this function creates an input where the costumer can put in an amount
+// of money that he/she wants to spend during the night. This amount will
+// be appended to a p tag somewhere on the page.
+function createFormMoneyInput() {
+  let moneyForm = document.createElement("form");
+  let moneyAmountInput = document.createElement("input");
+  let moneyAmountSubmitBtn = document.createElement("button");
+  moneyAmountSubmitBtn.innerText = "add my money";
+  moneyAmountInput.setAttribute("type", "text");
+  cart.append(moneyForm);
+  moneyForm.append(moneyAmountInput);
+  moneyForm.append(moneyAmountSubmitBtn);
+  moneyForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    let amountH2 = document.createElement("h2");
+    amountH2.innerText = "you have this much left to spend:";
+    let moneyAmountP = document.createElement("p");
+    moneyAmountP.classList.add("moneyP");
+    let cartBox = document.querySelector(".cart-box");
+    cartBox.append(amountH2);
+    cartBox.append(moneyAmountP);
+    moneyAmountP.innerText = `${moneyAmountInput.value}`;
+  });
+}
+//updates the remaining value in wallet.
+function updateSpendMoneyDisplay(productPrice) {
+  let moneyP = document.querySelector(".moneyP");
+  if (moneyP.innerText < parseInt(productPrice, 10)) {
+    alert("You dont have enough funds to buy this item");
+  } else {
+    moneyP.innerText = moneyP.innerText - parseInt(productPrice, 10);
+    cartSum(productPrice);
   }
 }
 //starts when opening site
