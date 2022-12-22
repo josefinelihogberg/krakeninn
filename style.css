@@ -273,6 +273,7 @@ main{
 }
 .bill-title, .bill-price{
   font-size: 1.5em;
+  margin-right: 1em;
 }
 .bill-price::after{
   content: " Sek";
