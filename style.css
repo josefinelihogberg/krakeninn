@@ -11,17 +11,12 @@ html {
 body{
     height: 100vh;
 }
-
-
-.total-price{
-  border: 2px solid black;
-  width: 6em;
-}
 .main-background{
     position: absolute;
     z-index: -10;
 }
 .main-header-text{
+  justify-content: center;
     font-size:2.1em;
     color: rgb(175, 149, 0);
 }
@@ -43,6 +38,7 @@ body{
 }
 .categoryHeader{
   display: block;
+  text-transform: capitalize;
   text-align: center;
   font-size: 3em;
   margin: .3em;
@@ -101,8 +97,7 @@ main{
   margin-top: 1em;
   height: 3em;
 }
-
-.search-container input {
+.search-container input, .addFundsInput {
   padding: 0.5em;
   border: 1px solid grey;
   opacity: 0.5;
@@ -110,9 +105,8 @@ main{
   border-radius: 0.5em 0 0 0.5em;
 }
 
-.search-container button {
-  width: 10%;
-  padding: 0.6em;
+.search-container button, .addFundsBtn  {
+  min-width: 10%;
   margin-right: 2em;
   background-color: rgb(121, 1, 1);
   color: white;
@@ -149,23 +143,28 @@ main{
     height: 10%;
     width: 50%;
 }
-
 .card{
   position: relative;
     display: block;
     margin: 2em auto 2em auto;
     padding: .5em;
     width: 40%;
-    min-height: 50%;
+    min-height: 30%;
     word-wrap:normal;
     border: 3px solid black;
     border-radius: 1em;
     box-shadow: 0 0 10px rgb(121, 1, 1);
     background-color: rgba(255, 255, 255, 0.336);
 }
-.card h2 {
+.product-title {
+  position: absolute;
+  width: 90%;
+  text-align: center;
+  border-radius: .2em .2em 0 0;
+  background-color: #d3cdcda6;
   font-size: 2em;
-  min-height: 2em;
+  min-height: 1em;
+  padding: .2em 0 .2em 0;
   margin: 0 0 0.5em 0;
 }
 .card p {
@@ -178,12 +177,14 @@ main{
 .card .price::after{
   content: " Sek";
 }
-.card img {
+.product-img {
+  max-height: 15em;
   width: 100%;
   border-radius: 1em;
   box-shadow: 0 0 7px black;
 }
 .buttonStyle{
+    text-transform: capitalize;
     background-color: transparent;
     border: 2px solid black;
     border-radius: .3em;
@@ -211,16 +212,17 @@ main{
   width: 300px;
   height: 35em;
   padding: 20px;
-  box-shadow: 1px 1px 3px rgb(175, 149, 0);
+  box-shadow: 0 0 6px rgb(121, 1, 1);
   margin-top: -5em;
-  background-color: bisque;
+  background-image:url(assets/background.jpg);
+  border: 2px solid black;
+  border-radius: 1em;
   overflow: scroll;
 }
-
 .cart.active {
   display: block;
-  right: 0;
-  top: 36%;
+  left: 9%;
+  top: 25%;
 }
 
 .close-cart {
@@ -237,7 +239,26 @@ main{
   cursor: pointer;
   position: relative;
 }
-
+.total, .moneyForm {
+  width: 100%;
+  height: 1.7em;
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+  border-top: 1px solid grey;
+  padding: 0.8em;
+}
+.total-title, .FundsLeftHeader{
+  font-size: 1.7em;
+  font-weight: 600;
+}
+.total-price, .moneyP{
+  border: 2px solid black;
+  width: 2.5em;
+  font-size: 1.7em;
+  align-items: center;
+  text-align: center;
+}
 .cart-total {
   margin-left: 0.5em;
   padding: 0.2em;
@@ -250,12 +271,16 @@ main{
   position: absolute;
   text-align: center;
 }
-
+.bill-title, .bill-price{
+  font-size: 1.5em;
+}
+.bill-price::after{
+  content: " Sek";
+}
 .cart-title {
   font-size: 2em;
   font-weight: 700;
   text-align: center;
-  margin-top: 1em;
 }
 
 .cart-img {
@@ -264,29 +289,29 @@ main{
   object-fit: cover;
   border-radius: 5px;
 }
-
-.cart-box {
-  margin-top: 1em;
+.billItemsContainer{
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+}
+.billItemsContainer div{
+  display: flex;
+  margin: 1em 0 0 0;
+}
+.cart-box {
+  display: block;
+  width: 100%;
   gap: 0.8em;
   align-items: center;
 }
 .goog-te-banner-frame{
     display:none !important;
 }
-
-.detail-box {
-  display: flex;
-  gap: 1em;
-  align-items: center;
-}
 .cart-quantity {
-  width: 2.5em;
-  height: 2.5em;
-  font: 2.5em;
-  background-color: #f3f3f3;
+  text-align: center;
+  width: 1em;
+  height: 1em;
+  font-size: 2em;
+  background-color: #f3f3f300;
   opacity: 0.8;
   border-radius: 3px;
   border: none;
@@ -306,13 +331,6 @@ main{
   font-weight: 500;
   border-radius: 0.5em;
   cursor: pointer;
-}
-.total {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 1em;
-  border-top: 1px solid grey;
-  padding: 0.8em;
 }
 #google_translate_element {
     text-align: right;
@@ -340,19 +358,18 @@ main{
   display: block;
   margin: 10px auto;
 }
-.total-title {
-  font-weight: 600;
-}
 .total-price {
-  margin-left: 0.5em;
   color: rgb(121, 1, 1);
 }
 .lang-btn{
     position: absolute;
     margin-top: 0.4em;
 }
-
-.pay-btn,
+.pay-btn{
+  display: block;
+  margin: 0 auto;
+}
+/* .pay-btn,
 .cart-remove {
   display: flex;
   margin: 0.8em auto;
@@ -364,10 +381,9 @@ main{
   font-size: 0.8em;
   border-radius: 0.5em;
   cursor: pointer;
-}
-.pay-btn:hover,
-.cart-remove:hover {
-  background: rgb(121, 1, 1);
+} */
+.pay-btn:active{
+  box-shadow: 0 0 6px rgb(121, 1, 1);;
 }
 .lang{
     background: transparent;
