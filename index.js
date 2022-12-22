@@ -53,6 +53,7 @@ function resetCart() {
   shoppingCounter = [];
   cartTotal.textContent = 0;
   totalPrice.innerText = 0;
+  WalletAmountCheck = true;
   createFormMoneyInput();
   if (totalAmountContainer.childNodes.length > 0 && moneyForm != null){
     moneyForm.remove();
@@ -390,7 +391,7 @@ function updateSpendMoneyDisplay(productPrice) {
     cartSum(productPrice);
   }else{
     if (moneyP.innerText < parseInt(productPrice, 10)) {
-      alert("You dont have enough funds to buy this item");
+      alert("You dont have enough funds to buy this product(s)");
       WalletAmountCheck = false;
     } else {
       moneyP.innerText = moneyP.innerText - parseInt(productPrice, 10);
