@@ -48,8 +48,15 @@ function addToCartListener() {
 }
 function resetCart() {
   let cartTotal = document.querySelector(".cart-total");
+  let totalAmountContainer = document.querySelector('.cartFooterContainer');
+  let moneyForm = document.querySelector('.moneyForm');
   shoppingCounter = [];
   cartTotal.textContent = 0;
+  totalPrice.innerText = 0;
+  createFormMoneyInput();
+  if (totalAmountContainer.childNodes.length > 0 && moneyForm != null){
+    moneyForm.remove();
+  }
 }
 function addToCart() {
   let cartTotal = document.querySelector(".cart-total");
@@ -128,7 +135,6 @@ function PayBtnClicked(){
  alert("Your order has been placed!");
  cartBox.innerHTML = "";
  resetCart();
- createFormMoneyInput();
 }
 // cartRemove.addEventListener('click', handelCartRemove);
 
