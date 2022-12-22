@@ -289,23 +289,22 @@ main{
   object-fit: cover;
   border-radius: 5px;
 }
-
-.cart-box {
+.billItemsContainer{
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+}
+.billItemsContainer div{
+  display: flex;
+  margin: 1em 0 0 0;
+}
+.cart-box {
+  display: block;
+  width: 100%;
   gap: 0.8em;
   align-items: center;
 }
 .goog-te-banner-frame{
     display:none !important;
-}
-
-.detail-box {
-  display: flex;
-  padding: .2em;
-  gap: .5em;
-  align-items: center;
 }
 .cart-quantity {
   text-align: center;
