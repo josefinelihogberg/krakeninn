@@ -52,6 +52,7 @@ function resetCart() {
   let moneyForm = document.querySelector('.moneyForm');
   shoppingCounter = [];
   cartTotal.textContent = 0;
+  totalPrice.innerText = 0;
   createFormMoneyInput();
   if (totalAmountContainer.childNodes.length > 0 && moneyForm != null){
     moneyForm.remove();
