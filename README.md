@@ -1,5 +1,5 @@
 # The Kraken Inn.- Examiniationen för kursen Arbetsmedotik del 2 
-**Keywords: Agile method, Git, Jasmine test, Kanban, Scrum, sprint**
+**Keywords: Agile methodology, Git, Jasmine test, Scrum, Sprint, Kanban board**
 
 An interactive web interface to order food and drinks based on the custiomer's vision. 
 
